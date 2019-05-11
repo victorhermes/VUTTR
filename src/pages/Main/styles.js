@@ -10,5 +10,15 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-    padding-bottom: 50px;
+    padding: 20px 0 40px 0;
+    width: 100%;
+    max-width: 550px;
+
+    h1 {
+        font-size: 40px;
+    }
+
+    p {
+        font-size: 17px;
+    }
 `;
