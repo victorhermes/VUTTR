@@ -24,6 +24,10 @@ export const Container = styled.div`
             margin: 15px 15px 10px 0;
         }
 
+        p {
+            padding-top: 3px;
+        }
+
         input[type="checkbox"] {
             margin: 0 15px 10px 15px;
 

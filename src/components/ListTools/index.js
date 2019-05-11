@@ -1,42 +1,60 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import ToolsActions from "../../store/ducks/tools";
 import Button from "../Button";
 import Search from "../Search";
 import IconClose from "./img/Icon-Close.svg";
 import { Container, ToolSection, ToolHeader, Header } from "./styles";
 
-const ListTools = () => (
-    <Container>
-        <Header>
-            <Search />
-            <Button />
-        </Header>
+class ListTools extends Component {
+    componentDidMount() {
+        const { getToolRequest } = this.props;
+        getToolRequest();
+    }
 
-        <ToolSection>
-            <ToolHeader>
-                <h1>Notion</h1>
-                <img src={IconClose} alt="Remover" />
-            </ToolHeader>
+    render() {
+        const { tools } = this.props;
+        return (
+            <Container>
+                <Header>
+                    <Search />
+                    <Button />
+                </Header>
 
-            <p>
-                All in one to organize teams and ideas. Write, plan, collaborate
-                and get organized.
-            </p>
-            <span>#organization #planning #collaboration #writing</span>
-        </ToolSection>
+                {tools.data.length ? (
+                    tools.data.map(tool => (
+                        <ToolSection key={tool.id}>
+                            <ToolHeader>
+                                <h1>{tool.title}</h1>
+                                <img src={IconClose} alt="Remover" />
+                            </ToolHeader>
 
-        <ToolSection>
-            <ToolHeader>
-                <h1>Notion</h1>
-                <img src={IconClose} alt="Remover" />
-            </ToolHeader>
+                            <p>{tool.description}</p>
 
-            <p>
-                All in one to organize teams and ideas. Write, plan, collaborate
-                and get organized.
-            </p>
-            <span>#organization #planning #collaboration #writing</span>
-        </ToolSection>
-    </Container>
-);
+                            <div>
+                                {tool.tags.map(tag => (
+                                    <span key={tag}>#{tag}</span>
+                                ))}
+                            </div>
+                        </ToolSection>
+                    ))
+                ) : (
+                    <h2 align="center">"Não há nada aqui!</h2>
+                )}
+            </Container>
+        );
+    }
+}
 
-export default ListTools;
+const mapStateToProps = state => ({
+    tools: state.tools
+});
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(ToolsActions, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ListTools);

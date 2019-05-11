@@ -5,7 +5,7 @@ const Search = () => (
     <Container>
         <input type="text" placeholder="Procurar ferramenta" />
         <div>
-            <input type="checkbox" checked="checked" />
+            <input type="checkbox" />
             <p>Procurar por tags?</p>
         </div>
     </Container>

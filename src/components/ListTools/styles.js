@@ -23,12 +23,17 @@ export const ToolSection = styled.div`
         padding-bottom: 10px;
     }
 
-    span {
+    div {
         display: flex;
-        list-style: none;
+        flex-wrap: wrap;
         padding-top: 15px;
-        color: #31225f;
-        font-weight: bold;
+
+        span {
+            list-style: none;
+            color: #31225f;
+            font-weight: bold;
+            padding-right: 10px;
+        }
     }
 `;
 
