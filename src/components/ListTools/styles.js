@@ -22,19 +22,6 @@ export const ToolSection = styled.div`
     h1 {
         padding-bottom: 10px;
     }
-
-    div {
-        display: flex;
-        flex-wrap: wrap;
-        padding-top: 15px;
-
-        span {
-            list-style: none;
-            color: #31225f;
-            font-weight: bold;
-            padding-right: 10px;
-        }
-    }
 `;
 
 export const ToolHeader = styled.div`
@@ -53,4 +40,17 @@ export const Header = styled.div`
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 10px;
+`;
+
+export const Tags = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 15px;
+
+    span {
+        list-style: none;
+        color: #31225f;
+        font-weight: bold;
+        padding-right: 10px;
+    }
 `;

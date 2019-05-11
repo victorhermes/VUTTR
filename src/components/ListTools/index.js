@@ -5,7 +5,7 @@ import ToolsActions from "../../store/ducks/tools";
 import Button from "../Button";
 import Search from "../Search";
 import IconClose from "./img/Icon-Close.svg";
-import { Container, ToolSection, ToolHeader, Header } from "./styles";
+import { Container, ToolSection, ToolHeader, Header, Tags } from "./styles";
 
 class ListTools extends Component {
     componentDidMount() {
@@ -32,11 +32,11 @@ class ListTools extends Component {
 
                             <p>{tool.description}</p>
 
-                            <div>
+                            <Tags>
                                 {tool.tags.map(tag => (
                                     <span key={tag}>#{tag}</span>
                                 ))}
-                            </div>
+                            </Tags>
                         </ToolSection>
                     ))
                 ) : (
