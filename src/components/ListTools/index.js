@@ -15,7 +15,8 @@ import {
 
 class ListTools extends Component {
     state = {
-        search: ""
+        search: "",
+        tag: null
     };
 
     componentDidMount() {
@@ -25,6 +26,10 @@ class ListTools extends Component {
 
     onChangeFilter = e => {
         this.setState({ search: e.target.value });
+    };
+
+    onChangeTag = e => {
+        this.setState({ tag: e.target.value });
     };
 
     render() {
@@ -45,13 +50,15 @@ class ListTools extends Component {
                     <Search>
                         <input
                             type="text"
-                            name="text"
                             placeholder="Procurar ferramenta"
                             onChange={this.onChangeFilter}
                         />
 
                         <div>
-                            <input type="checkbox" />
+                            <input
+                                type="checkbox"
+                                onChange={this.onChangeTag}
+                            />
                             <p>Procurar por tags?</p>
                         </div>
                     </Search>
