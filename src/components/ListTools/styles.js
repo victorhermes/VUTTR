@@ -29,6 +29,11 @@ export const ToolHeader = styled.div`
     justify-content: space-between;
     align-items: flex-start;
 
+    a {
+        text-decoration: none;
+        color: #31225f;
+    }
+
     img {
         width: 15px;
     }
