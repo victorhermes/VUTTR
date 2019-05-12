@@ -72,7 +72,10 @@ class ListTools extends Component {
                                 <a href={tool.link}>
                                     <h1> {tool.title}</h1>
                                 </a>
-                                <img src={IconClose} alt="Remover" />
+                                <div>
+                                    <a href="">EDITAR</a>
+                                    <img src={IconClose} alt="Remover" />
+                                </div>
                             </ToolHeader>
 
                             <p>{tool.description}</p>
