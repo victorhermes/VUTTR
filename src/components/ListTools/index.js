@@ -18,7 +18,11 @@ class ListTools extends Component {
         return (
             <Container>
                 <Header>
-                    <Search />
+                    <input
+                        type="text"
+                        name="text"
+                        placeholder="Procurar ferramenta"
+                    />
                     <Button />
                 </Header>
 
@@ -26,7 +30,9 @@ class ListTools extends Component {
                     tools.data.map(tool => (
                         <ToolSection key={tool.id}>
                             <ToolHeader>
-                                <h1>{tool.title}</h1>
+                                <a href={tool.link} target="_blank">
+                                    <h1> {tool.title}</h1>
+                                </a>
                                 <img src={IconClose} alt="Remover" />
                             </ToolHeader>
 

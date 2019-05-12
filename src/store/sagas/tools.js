@@ -8,6 +8,15 @@ export function* getTools() {
     yield put(ToolsActions.getToolSuccess(response.data));
 }
 
+export function* filterTools({ text }) {
+    try {
+        yield put(ToolsActions.filterToolSuccess(text));
+    } catch (err) {
+        console.tron.log(err);
+        console.tron.log("Erro no sagas filterTools");
+    }
+}
+
 /*export function* createProjects({ title }) {
     try {
         const response = yield call(api.post, "projects", { title });
@@ -24,24 +33,4 @@ export function* getTools() {
     }
 }
 
-export function* deleteProject({ id }) {
-    try {
-        yield call(api.delete, `projects/${id}`);
-
-        yield put(ProjectsActions.deleteProjectSuccess(id));
-
-        yield put(
-            toastrActions.add({
-                type: "success",
-                title: "Projeto deletado com sucesso"
-            })
-        );
-    } catch (err) {
-        yield put(
-            toastrActions.add({
-                type: "error",
-                title: "Houve um problema!"
-            })
-        );
-    }
-}*/
+*/
