@@ -6,8 +6,6 @@ import Immutable from "seamless-immutable";
 const { Types, Creators } = createActions({
     getToolRequest: null,
     getToolSuccess: ["data"],
-    filterToolRequest: ["text"],
-    filterToolSuccess: ["text"],
     openToolModal: null,
     closeToolModal: null
 });
@@ -26,11 +24,8 @@ export const INITIAL_STATE = Immutable({
 
 export const success = (state, { data }) => state.merge({ data });
 
-export const filterSuccess = (state, { text }) => {};
-
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
-    [Types.GET_TOOL_SUCCESS]: success,
-    [Types.FILTER_TOOL_SUCCESS]: filterSuccess
+    [Types.GET_TOOL_SUCCESS]: success
 });
