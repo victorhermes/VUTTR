@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ToolsActions from "../../store/ducks/tools";
-import Button from "../Button";
 import IconClose from "./img/Icon-Close.svg";
+import IconPlusCircle from "./img/Icon-Plus-Circle.svg";
 import {
     Container,
     ToolSection,
     ToolHeader,
     Header,
     Tags,
-    Search
+    Search,
+    Button
 } from "./styles";
 
 class ListTools extends Component {
@@ -62,7 +63,9 @@ class ListTools extends Component {
                             <p>Procurar por tags?</p>
                         </div>
                     </Search>
-                    <Button />
+                    <Button>
+                        <img src={IconPlusCircle} alt="Adicionar item" />
+                    </Button>
                 </Header>
 
                 {filterTool.length ? (
@@ -73,7 +76,7 @@ class ListTools extends Component {
                                     <h1> {tool.title}</h1>
                                 </a>
                                 <div>
-                                    <a href="">EDITAR</a>
+                                    <a href="https://www.dasdsa.com">EDITAR</a>
                                     <img src={IconClose} alt="Remover" />
                                 </div>
                             </ToolHeader>
