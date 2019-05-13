@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import ToolsActions from "../../store/ducks/tools";
 import IconClose from "./img/Icon-Close.svg";
 import IconPlusCircle from "./img/Icon-Plus-Circle.svg";
+import Modal from "../Modal";
 import {
     Container,
     ToolSection,
@@ -34,7 +35,7 @@ class ListTools extends Component {
     };
 
     render() {
-        const { tools } = this.props;
+        const { tools, openToolModal, closeToolModal } = this.props;
         const { search } = this.state;
 
         const filterTool = tools.data.filter(tool => {
@@ -63,7 +64,7 @@ class ListTools extends Component {
                             <p>Procurar por tags?</p>
                         </div>
                     </Search>
-                    <Button>
+                    <Button onClick={openToolModal}>
                         <img src={IconPlusCircle} alt="Adicionar item" />
                     </Button>
                 </Header>
@@ -92,6 +93,44 @@ class ListTools extends Component {
                     ))
                 ) : (
                     <h2 align="center">Ferramenta não existe!</h2>
+                )}
+
+                {tools.toolModalOpen && (
+                    <Modal size="big">
+                        <h1>Add new tool</h1>
+
+                        <form onSubmit={() => {}}>
+                            <span>Tool Name</span>
+
+                            <input type="text" />
+
+                            <span>Tool Link</span>
+
+                            <input type="text" />
+
+                            <span>Tool Description</span>
+
+                            <textarea rows="4" cols="50">
+                                At w3schools.com you will learn how to make a
+                                website. We offer free tutorials in all web
+                                development technologies.
+                            </textarea>
+
+                            <div>
+                                <Button
+                                    size="big"
+                                    color="grey"
+                                    onClick={closeToolModal}
+                                >
+                                    Fechar
+                                </Button>
+
+                                <Button size="big" type="submit">
+                                    Salvar
+                                </Button>
+                            </div>
+                        </form>
+                    </Modal>
                 )}
             </Container>
         );
