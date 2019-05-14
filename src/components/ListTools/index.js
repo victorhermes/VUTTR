@@ -1,4 +1,5 @@
 import { withFormik } from 'formik';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
@@ -15,6 +16,38 @@ import {
 } from './styles';
 
 class ListTools extends Component {
+  static propTypes = {
+    getToolRequest: PropTypes.func.isRequired,
+    deleteToolRequest: PropTypes.func.isRequired,
+    openToolModal: PropTypes.func.isRequired,
+    closeToolModal: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    errors: PropTypes.shape({
+      title: PropTypes.string,
+      link: PropTypes.string,
+      description: PropTypes.string,
+      tag: PropTypes.string,
+    }).isRequired,
+    values: PropTypes.shape({
+      title: PropTypes.string,
+      link: PropTypes.string,
+      description: PropTypes.string,
+      tag: PropTypes.string,
+    }).isRequired,
+    tools: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+          link: PropTypes.string,
+          description: PropTypes.string,
+          tags: PropTypes.array.isRequired,
+        }),
+      ),
+    }).isRequired,
+  };
+
   state = {
     search: '',
   };
@@ -26,10 +59,6 @@ class ListTools extends Component {
 
   onChangeFilter = (e) => {
     this.setState({ search: e.target.value });
-  };
-
-  onChangeTag = (e) => {
-    this.setState({ tag: e.target.value });
   };
 
   getId = (e) => {
@@ -106,7 +135,7 @@ class ListTools extends Component {
             <form onSubmit={handleSubmit}>
               <span>Tool Name</span>
 
-              <input name="title" onChange={handleChange} value={values.title} autoFocus />
+              <input name="title" onChange={handleChange} value={values.title} />
 
               {!!errors.title && <Erro>{errors.title}</Erro>}
 
@@ -129,9 +158,9 @@ class ListTools extends Component {
 
               <span>Tags</span>
 
-              <input name="tag" onChange={handleChange} value={values.tag} />
+              <input name="tags" onChange={handleChange} value={values.tags} />
 
-              {!!errors.tag && <Erro>{errors.tag}</Erro>}
+              {!!errors.tags && <Erro>{errors.tags}</Erro>}
 
               <div>
                 <Button size="big" type="submit">
@@ -184,7 +213,7 @@ export default compose(
         .required('Campo obrigatório')
         .min(20, 'Descrição muito curto')
         .max(600, 'Descrição muito comprida'),
-      tag: Yup.string()
+      tags: Yup.string()
         .required('Campo obrigatório')
         .min(2, 'Tag muito curta')
         .max(100, 'Tag muito comprida'),
@@ -192,14 +221,14 @@ export default compose(
 
     handleSubmit: (values, { props, resetForm }) => {
       const {
-        title, link, description, tag,
+        title, link, description, tags,
       } = values;
 
-      const tags = tag.split(',').map(item => item.trim());
+      const tgs = tags.split(',').map(item => item.trim());
 
       const { createToolRequest } = props;
 
-      createToolRequest(title, link, description, tags);
+      createToolRequest(title, link, description, tgs);
 
       resetForm();
     },
