@@ -57,6 +57,7 @@ export const Tags = styled.div`
         color: #31225f;
         font-weight: bold;
         padding-right: 10px;
+        text-transform: lowercase;
     }
 `;
 
