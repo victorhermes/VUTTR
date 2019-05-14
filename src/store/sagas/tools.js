@@ -23,3 +23,13 @@ export function* createTools({ title, link, description, tags }) {
         console.tron.log(err);
     }
 }
+
+export function* deleteRequest({ id }) {
+    try {
+        yield call(api.delete, `tools/${id}`);
+
+        yield put(ToolsActions.deleteToolSuccess(id));
+    } catch (err) {
+        console.log(err);
+    }
+}

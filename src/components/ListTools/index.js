@@ -37,6 +37,12 @@ class ListTools extends Component {
         this.setState({ tag: e.target.value });
     };
 
+    getId = e => {
+        const { deleteToolRequest } = this.props;
+        const id = e.target.value;
+        deleteToolRequest(id);
+    };
+
     render() {
         const {
             handleChange,
@@ -88,8 +94,13 @@ class ListTools extends Component {
                                     <h1> {tool.title}</h1>
                                 </a>
                                 <div>
-                                    <a href="https://www.dasdsa.com">EDITAR</a>
-                                    <img src={IconClose} alt="Remover" />
+                                    <button>EDITAR</button>
+                                    <button
+                                        value={tool.id}
+                                        onClick={this.getId}
+                                    >
+                                        X
+                                    </button>
                                 </div>
                             </ToolHeader>
 
@@ -97,7 +108,9 @@ class ListTools extends Component {
 
                             <Tags>
                                 {tool.tags.map(tag => (
-                                    <span key={tag}>#{tag}</span>
+                                    <span key={Math.random() + tag}>
+                                        #{tag}
+                                    </span>
                                 ))}
                             </Tags>
                         </ToolSection>
