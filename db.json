@@ -42,22 +42,82 @@
       ]
     },
     {
-      "title": "Nodemon",
-      "link": "www.nodemon.com",
-      "description": "apenas um node mon",
+      "title": "Redux",
+      "link": "https://redux.com.br",
+      "description": "Redux é uma biblioteca JavaScript de código aberto para gerenciar o estado do aplicativo.",
       "tags": [
-        "tools"
+        "redux",
+        "react",
+        "web"
       ],
       "id": 4
     },
     {
-      "title": "formik",
-      "link": "https://formik.com",
-      "description": "outro formik com os mesmos dados",
+      "title": "Native",
+      "link": "https://native.com.br",
+      "description": "Apenas um teste",
       "tags": [
-        "cool"
+        "react",
+        "native",
+        "amor"
       ],
       "id": 5
+    },
+    {
+      "title": "teste",
+      "link": "www.teste.com.br",
+      "description": "another test",
+      "tags": [
+        "amor,paz,esperança"
+      ],
+      "id": 6
+    },
+    {
+      "title": "askdas",
+      "link": "askdkas",
+      "description": "askdaskd",
+      "tags": [
+        "amor",
+        "paz",
+        "perança"
+      ],
+      "id": 7
+    },
+    {
+      "title": "asdas",
+      "link": "dasdasd",
+      "description": "asdasdas",
+      "tags": [
+        "paz",
+        " esperança"
+      ],
+      "id": 8
+    },
+    {
+      "title": "sadasd",
+      "link": "asdasd",
+      "description": "asdasdasd",
+      "tags": [
+        "paz",
+        " perança",
+        "amor",
+        " locura",
+        "  odio"
+      ],
+      "id": 9
+    },
+    {
+      "title": "sadasd",
+      "link": "qwqdqw",
+      "description": "teste som",
+      "tags": [
+        "amor",
+        "perança",
+        "odio",
+        "prazer",
+        "loucuras"
+      ],
+      "id": 10
     }
   ]
 }

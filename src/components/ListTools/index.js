@@ -48,13 +48,13 @@ class ListTools extends Component {
         } = this.props;
         const { search } = this.state;
 
-        /*const filterTool = tools.data.filter(tool => {
+        const filterTool = tools.data.filter(tool => {
             return (
                 tool.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
                 tool.description.toLowerCase().indexOf(search.toLowerCase()) !==
                     -1
             );
-        });*/
+        });
 
         return (
             <Container>
@@ -79,8 +79,8 @@ class ListTools extends Component {
                     </Button>
                 </Header>
 
-                {tools.data.length ? (
-                    tools.data.map(tool => (
+                {filterTool.length ? (
+                    filterTool.map(tool => (
                         <ToolSection key={tool.id}>
                             <ToolHeader>
                                 <a href={tool.link}>
@@ -200,7 +200,10 @@ export default compose(
 
         handleSubmit: (values, { props, resetForm }) => {
             const { title, link, description, tag } = values;
-            const tags = [tag];
+            var tags = tag.split(",").map(function(item) {
+                return item.trim();
+            });
+
             const { createToolRequest } = props;
 
             createToolRequest(title, link, description, tags);
