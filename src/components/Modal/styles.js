@@ -18,7 +18,8 @@ export const Content = styled.div`
     border-radius: 6px;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
     padding: 40px;
-    width: ${props => (props.size === "big" ? 600 : 400)}px;
+    width: 100%;
+    max-width: ${props => (props.size === "big" ? 600 : 400)}px;
 
     h1 {
         font-size: 26px;
@@ -43,6 +44,10 @@ export const Content = styled.div`
 
         > input {
             height: 40px;
+        }
+
+        > input,
+        textarea {
             padding: 10px;
             border-radius: 3px;
             border: 1px solid #ebeaed;
@@ -53,7 +58,7 @@ export const Content = styled.div`
             font-size: 16px;
 
             &:focus {
-                border-color: #7289da;
+                border-color: #170c3a;
             }
         }
 
@@ -70,7 +75,7 @@ export const Content = styled.div`
             button {
                 background: #365df0;
                 color: #ffffff;
-                margin: 15px 0 0 10px;
+                margin: 35px 0 0 10px;
                 height: 40px;
                 font-size: 18px;
                 padding: 0 20px 0 20px;

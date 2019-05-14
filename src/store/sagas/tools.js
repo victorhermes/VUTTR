@@ -7,3 +7,19 @@ export function* getTools() {
 
     yield put(ToolsActions.getToolSuccess(response.data));
 }
+
+export function* createTools({ title, link, description, tags }) {
+    try {
+        const response = yield call(api.post, "tools", {
+            title,
+            link,
+            description,
+            tags
+        });
+
+        yield put(ToolsActions.createToolSuccess(response.data));
+        yield put(ToolsActions.closeToolModal());
+    } catch (err) {
+        console.tron.log(err);
+    }
+}

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { withFormik } from "formik";
+import * as Yup from "yup";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, compose } from "redux";
 import ToolsActions from "../../store/ducks/tools";
 import IconClose from "./img/Icon-Close.svg";
 import IconPlusCircle from "./img/Icon-Plus-Circle.svg";
@@ -35,16 +37,24 @@ class ListTools extends Component {
     };
 
     render() {
-        const { tools, openToolModal, closeToolModal } = this.props;
+        const {
+            handleChange,
+            values,
+            handleSubmit,
+            errors,
+            tools,
+            openToolModal,
+            closeToolModal
+        } = this.props;
         const { search } = this.state;
 
-        const filterTool = tools.data.filter(tool => {
+        /*const filterTool = tools.data.filter(tool => {
             return (
                 tool.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
                 tool.description.toLowerCase().indexOf(search.toLowerCase()) !==
                     -1
             );
-        });
+        });*/
 
         return (
             <Container>
@@ -69,8 +79,8 @@ class ListTools extends Component {
                     </Button>
                 </Header>
 
-                {filterTool.length ? (
-                    filterTool.map(tool => (
+                {tools.data.length ? (
+                    tools.data.map(tool => (
                         <ToolSection key={tool.id}>
                             <ToolHeader>
                                 <a href={tool.link}>
@@ -99,22 +109,43 @@ class ListTools extends Component {
                     <Modal size="big">
                         <h1>Add new tool</h1>
 
-                        <form onSubmit={() => {}}>
+                        <form onSubmit={handleSubmit}>
                             <span>Tool Name</span>
 
-                            <input type="text" />
+                            <input
+                                name="title"
+                                onChange={handleChange}
+                                value={values.title}
+                                autoFocus
+                            />
+
+                            {!!errors.title && <p>{errors.title}</p>}
 
                             <span>Tool Link</span>
 
-                            <input type="text" />
+                            <input
+                                name="link"
+                                onChange={handleChange}
+                                value={values.link}
+                            />
 
                             <span>Tool Description</span>
 
-                            <textarea rows="4" cols="50">
-                                At w3schools.com you will learn how to make a
-                                website. We offer free tutorials in all web
-                                development technologies.
-                            </textarea>
+                            <textarea
+                                name="description"
+                                onChange={handleChange}
+                                value={values.description}
+                                rows="4"
+                                cols="50"
+                            />
+
+                            <span>Tags</span>
+
+                            <input
+                                name="tag"
+                                onChange={handleChange}
+                                value={values.tag}
+                            />
 
                             <div>
                                 <Button
@@ -144,7 +175,37 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators(ToolsActions, dispatch);
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+export default compose(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    ),
+    withFormik({
+        mapPropsToValues: () => ({
+            title: "",
+            link: "",
+            description: "",
+            tags: [""]
+        }),
+
+        validateOnChange: true,
+        validateOnBlur: false,
+
+        validationSchema: Yup.object().shape({
+            title: Yup.string()
+                .required("Campo obrigatório")
+                .min(1, "Nome muito curto")
+                .max(20, "Nome muito grande")
+        }),
+
+        handleSubmit: (values, { props, resetForm }) => {
+            const { title, link, description, tag } = values;
+            const tags = [tag];
+            const { createToolRequest } = props;
+
+            createToolRequest(title, link, description, tags);
+
+            resetForm();
+        }
+    })
 )(ListTools);

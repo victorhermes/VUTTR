@@ -6,6 +6,8 @@ import Immutable from "seamless-immutable";
 const { Types, Creators } = createActions({
     getToolRequest: null,
     getToolSuccess: ["data"],
+    createToolRequest: ["title", "link", "description", "tags"],
+    createToolSuccess: ["data"],
     openToolModal: null,
     closeToolModal: null
 });
@@ -17,10 +19,13 @@ export default Creators;
 
 export const INITIAL_STATE = Immutable({
     data: [],
-    toolModalOpen: true
+    toolModalOpen: false
 });
 
 /* Reducers */
+
+export const createSuccess = (state, { data }) =>
+    state.merge({ data: [...state.data, data] });
 
 export const success = (state, { data }) => state.merge({ data });
 
@@ -33,5 +38,6 @@ export const closeModal = state => state.merge({ toolModalOpen: false });
 export const reducer = createReducer(INITIAL_STATE, {
     [Types.GET_TOOL_SUCCESS]: success,
     [Types.OPEN_TOOL_MODAL]: openModal,
-    [Types.CLOSE_TOOL_MODAL]: closeModal
+    [Types.CLOSE_TOOL_MODAL]: closeModal,
+    [Types.CREATE_TOOL_SUCCESS]: createSuccess
 });
