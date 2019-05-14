@@ -205,7 +205,9 @@ export default compose(
                 .required("Campo obrigatório")
                 .min(1, "Título muito curto")
                 .max(20, "Título muito comprido"),
-            link: Yup.string().url("URL inválida"),
+            link: Yup.string()
+                .required("Campo obrigatório")
+                .url("URL inválida"),
             description: Yup.string()
                 .required("Campo obrigatório")
                 .min(20, "Descrição muito curto")
