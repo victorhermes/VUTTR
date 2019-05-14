@@ -138,8 +138,7 @@ class ListTools extends Component {
                                 name="description"
                                 onChange={handleChange}
                                 value={values.description}
-                                rows="4"
-                                cols="50"
+                                rows="2"
                             />
 
                             {!!errors.description && (
