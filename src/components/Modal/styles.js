@@ -6,7 +6,7 @@ export const Container = styled.div`
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: #fff;
 
     display: flex;
     justify-content: center;
@@ -16,7 +16,6 @@ export const Container = styled.div`
 export const Content = styled.div`
     background: #ffffff;
     border-radius: 6px;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
     padding: 40px;
     width: 100%;
     max-width: ${props => (props.size === "big" ? 600 : 400)}px;
@@ -64,17 +63,16 @@ export const Content = styled.div`
 
         div {
             display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
+            flex-direction: row-reverse;
 
             button:first-child {
-                background: transparent;
-                color: #365df0;
+                background: #365df0;
+                color: #ffffff;
             }
 
             button {
-                background: #365df0;
-                color: #ffffff;
+                background: transparent;
+                color: #365df0;
                 margin: 35px 0 0 10px;
                 height: 40px;
                 font-size: 18px;

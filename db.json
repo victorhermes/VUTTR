@@ -1,31 +1,97 @@
 {
-    "tools": [
-        {
-            "id": 1,
-            "title": "Notion",
-            "link": "https://notion.so",
-            "description": "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
-            "tags": [
-                "organization",
-                "planning",
-                "collaboration",
-                "writing",
-                "calendar"
-            ]
-        },
-        {
-            "id": 2,
-            "title": "json-server",
-            "link": "https://github.com/typicode/json-server",
-            "description": "Fake REST API based on a json schema. Useful for mocking and creating APIs for front-end devs to consume in coding challenges.",
-            "tags": ["api", "json", "schema", "node", "github", "rest"]
-        },
-        {
-            "id": 3,
-            "title": "fastify",
-            "link": "https://www.fastify.io/",
-            "description": "Extremely fast and simple, low-overhead web framework for NodeJS. Supports HTTP2.",
-            "tags": ["web", "framework", "node", "http2", "https", "localhost"]
-        }
-    ]
+  "tools": [
+    {
+      "id": 1,
+      "title": "Notion",
+      "link": "https://notion.so",
+      "description": "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
+      "tags": [
+        "organization",
+        "planning",
+        "collaboration",
+        "writing",
+        "calendar"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "json-server",
+      "link": "https://github.com/typicode/json-server",
+      "description": "Fake REST API based on a json schema. Useful for mocking and creating APIs for front-end devs to consume in coding challenges.",
+      "tags": [
+        "api",
+        "json",
+        "schema",
+        "node",
+        "github",
+        "rest"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "fastify",
+      "link": "https://www.fastify.io/",
+      "description": "Extremely fast and simple, low-overhead web framework for NodeJS. Supports HTTP2.",
+      "tags": [
+        "web",
+        "framework",
+        "node",
+        "http2",
+        "https",
+        "localhost"
+      ]
+    },
+    {
+      "title": "YUP",
+      "link": "https://jaredpalmer.com/formik/docs/guides/validation",
+      "description": "Yup is a JavaScript object schema validator and object parser. The API and style is stolen heavily inspired by Joi, which is an amazing library but is generally too large and difficult to package for use in a browser. Yup is leaner",
+      "tags": [
+        "yup",
+        "formik",
+        "react"
+      ],
+      "id": 4
+    },
+    {
+      "title": "YUP²",
+      "link": "https://github.com/jquense/yup",
+      "description": "Yup is a JavaScript object schema validator and object parser. The API and style is stolen heavily inspired by Joi, which is an amazing library but is generally too large and difficult to package for use in a browser. Yup is leaner: in the same spirit, without some of the fancy features. You can use it on the server as well, but in that case you might as well just use Joi.\n\nYup is also a good bit less opinionated than joi, allowing...",
+      "tags": [
+        "yup",
+        "formik",
+        "react"
+      ],
+      "id": 5
+    },
+    {
+      "title": "Moom",
+      "link": "http://www.moom.com.br",
+      "description": "asdasdasdasdasdasdasda",
+      "tags": [
+        "amor",
+        "paz",
+        "esperança",
+        "velor",
+        "amor",
+        "desejo",
+        "satisfação",
+        "alegria",
+        "prazer",
+        "sintonia",
+        "maratona",
+        "deus fi"
+      ],
+      "id": 6
+    },
+    {
+      "title": "tomar banho",
+      "link": "https://tomarbanho.com.br",
+      "description": "indo tomar banho agora.",
+      "tags": [
+        "tomar",
+        "banho tomado"
+      ],
+      "id": 7
+    }
+  ]
 }

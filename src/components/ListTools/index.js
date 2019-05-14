@@ -157,16 +157,16 @@ class ListTools extends Component {
                             {!!errors.tag && <Error>{errors.tag}</Error>}
 
                             <div>
+                                <Button size="big" type="submit">
+                                    Salvar
+                                </Button>
+
                                 <Button
                                     size="big"
                                     color="grey"
                                     onClick={closeToolModal}
                                 >
                                     Fechar
-                                </Button>
-
-                                <Button size="big" type="submit">
-                                    Salvar
                                 </Button>
                             </div>
                         </form>
