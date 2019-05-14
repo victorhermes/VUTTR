@@ -1,123 +1,31 @@
 {
-  "tools": [
-    {
-      "id": 1,
-      "title": "Notion",
-      "link": "https://notion.so",
-      "description": "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
-      "tags": [
-        "organization",
-        "planning",
-        "collaboration",
-        "writing",
-        "calendar"
-      ]
-    },
-    {
-      "id": 2,
-      "title": "json-server",
-      "link": "https://github.com/typicode/json-server",
-      "description": "Fake REST API based on a json schema. Useful for mocking and creating APIs for front-end devs to consume in coding challenges.",
-      "tags": [
-        "api",
-        "json",
-        "schema",
-        "node",
-        "github",
-        "rest"
-      ]
-    },
-    {
-      "id": 3,
-      "title": "fastify",
-      "link": "https://www.fastify.io/",
-      "description": "Extremely fast and simple, low-overhead web framework for NodeJS. Supports HTTP2.",
-      "tags": [
-        "web",
-        "framework",
-        "node",
-        "http2",
-        "https",
-        "localhost"
-      ]
-    },
-    {
-      "title": "Redux",
-      "link": "https://redux.com.br",
-      "description": "Redux é uma biblioteca JavaScript de código aberto para gerenciar o estado do aplicativo.",
-      "tags": [
-        "redux",
-        "react",
-        "web"
-      ],
-      "id": 4
-    },
-    {
-      "title": "Native",
-      "link": "https://native.com.br",
-      "description": "Apenas um teste",
-      "tags": [
-        "react",
-        "native",
-        "amor"
-      ],
-      "id": 5
-    },
-    {
-      "title": "teste",
-      "link": "www.teste.com.br",
-      "description": "another test",
-      "tags": [
-        "amor,paz,esperança"
-      ],
-      "id": 6
-    },
-    {
-      "title": "askdas",
-      "link": "askdkas",
-      "description": "askdaskd",
-      "tags": [
-        "amor",
-        "paz",
-        "perança"
-      ],
-      "id": 7
-    },
-    {
-      "title": "asdas",
-      "link": "dasdasd",
-      "description": "asdasdas",
-      "tags": [
-        "paz",
-        " esperança"
-      ],
-      "id": 8
-    },
-    {
-      "title": "sadasd",
-      "link": "asdasd",
-      "description": "asdasdasd",
-      "tags": [
-        "paz",
-        " perança",
-        "amor",
-        " locura",
-        "  odio"
-      ],
-      "id": 9
-    },
-    {
-      "title": "sadasd",
-      "link": "qwqdqw",
-      "description": "teste som",
-      "tags": [
-        "amor",
-        "perança",
-        "odio",
-        "prazer",
-        "loucuras"
-      ],
-      "id": 10
-    }
-  ]
+    "tools": [
+        {
+            "id": 1,
+            "title": "Notion",
+            "link": "https://notion.so",
+            "description": "All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. ",
+            "tags": [
+                "organization",
+                "planning",
+                "collaboration",
+                "writing",
+                "calendar"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "json-server",
+            "link": "https://github.com/typicode/json-server",
+            "description": "Fake REST API based on a json schema. Useful for mocking and creating APIs for front-end devs to consume in coding challenges.",
+            "tags": ["api", "json", "schema", "node", "github", "rest"]
+        },
+        {
+            "id": 3,
+            "title": "fastify",
+            "link": "https://www.fastify.io/",
+            "description": "Extremely fast and simple, low-overhead web framework for NodeJS. Supports HTTP2.",
+            "tags": ["web", "framework", "node", "http2", "https", "localhost"]
+        }
+    ]
 }

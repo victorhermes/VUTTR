@@ -7,6 +7,7 @@ import ToolsActions from "../../store/ducks/tools";
 import IconClose from "./img/Icon-Close.svg";
 import IconPlusCircle from "./img/Icon-Plus-Circle.svg";
 import Modal from "../Modal";
+import Error from "../../styles/Error";
 import {
     Container,
     ToolSection,
@@ -119,7 +120,7 @@ class ListTools extends Component {
                                 autoFocus
                             />
 
-                            {!!errors.title && <p>{errors.title}</p>}
+                            {!!errors.title && <Error>{errors.title}</Error>}
 
                             <span>Tool Link</span>
 
@@ -128,6 +129,8 @@ class ListTools extends Component {
                                 onChange={handleChange}
                                 value={values.link}
                             />
+
+                            {!!errors.link && <Error>{errors.link}</Error>}
 
                             <span>Tool Description</span>
 
@@ -139,6 +142,10 @@ class ListTools extends Component {
                                 cols="50"
                             />
 
+                            {!!errors.description && (
+                                <Error>{errors.description}</Error>
+                            )}
+
                             <span>Tags</span>
 
                             <input
@@ -146,6 +153,8 @@ class ListTools extends Component {
                                 onChange={handleChange}
                                 value={values.tag}
                             />
+
+                            {!!errors.tag && <Error>{errors.tag}</Error>}
 
                             <div>
                                 <Button
@@ -194,13 +203,23 @@ export default compose(
         validationSchema: Yup.object().shape({
             title: Yup.string()
                 .required("Campo obrigatório")
-                .min(1, "Nome muito curto")
-                .max(20, "Nome muito grande")
+                .min(1, "Título muito curto")
+                .max(20, "Título muito comprido"),
+            link: Yup.string().url("URL inválida"),
+            description: Yup.string()
+                .required("Campo obrigatório")
+                .min(20, "Descrição muito curto")
+                .max(600, "Descrição muito comprida"),
+            tag: Yup.string()
+                .required("Campo obrigatório")
+                .min(2, "Tag muito curta")
+                .max(100, "Tag muito comprida")
         }),
 
         handleSubmit: (values, { props, resetForm }) => {
             const { title, link, description, tag } = values;
-            var tags = tag.split(",").map(function(item) {
+
+            const tags = tag.split(",").map(function(item) {
                 return item.trim();
             });
 
