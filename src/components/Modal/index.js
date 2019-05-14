@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { Container, Content } from "./styles";
+import { Container, Content } from './styles';
 
 const Modal = ({ children, size }) => (
-    <Container>
-        <Content size={size}> {children} </Content>
-    </Container>
+  <Container>
+    <Content size={size}> {children} </Content>
+  </Container>
 );
 
 export default Modal;

@@ -1,4 +1,10 @@
-module.exports = function override(config, env) {
-    //do stuff with the webpack config...
-    return config;
-};
+const { override, addBabelPlugin } = require('customize-cra');
+
+const rootImport = [
+  'root-import',
+  {
+    rootPathSuffix: 'src',
+  },
+];
+
+module.exports = override(addBabelPlugin(rootImport));
