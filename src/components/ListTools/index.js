@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 import * as Yup from 'yup';
 
+import api from '~/services/api';
+
 import ToolsActions from '~/store/ducks/tools';
 
 import Erro from '~/styles/Error';
@@ -50,6 +52,7 @@ class ListTools extends Component {
 
   state = {
     search: '',
+    data: '',
   };
 
   componentDidMount() {
@@ -67,17 +70,25 @@ class ListTools extends Component {
     deleteToolRequest(id);
   };
 
+  openEditModalId = async (e) => {
+    const { openToolModal } = this.props;
+    openToolModal();
+    const id = e.target.value;
+    const { data } = await api.get(`/tools/${id}`);
+    this.setState({ data });
+  };
+
+  closeEditModalId = () => {
+    const { closeToolModal } = this.props;
+    this.setState({ data: '' });
+    closeToolModal();
+  };
+
   render() {
     const {
-      handleChange,
-      values,
-      handleSubmit,
-      errors,
-      tools,
-      openToolModal,
-      closeToolModal,
+      handleChange, values, handleSubmit, errors, tools, openToolModal,
     } = this.props;
-    const { search } = this.state;
+    const { data, search } = this.state;
 
     const filterTool = tools.data.filter(
       tool => tool.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
@@ -86,6 +97,7 @@ class ListTools extends Component {
 
     return (
       <Container>
+        {console.log(data)}
         <Header>
           <Search>
             <input type="text" placeholder="Procurar ferramenta" onChange={this.onChangeFilter} />
@@ -108,7 +120,9 @@ class ListTools extends Component {
                   <h1> {tool.title}</h1>
                 </a>
                 <div>
-                  <button type="button">EDITAR</button>
+                  <button type="button" value={tool.id} onClick={this.openEditModalId}>
+                    EDITAR
+                  </button>
                   <button type="button" value={tool.id} onClick={this.getId}>
                     X
                   </button>
@@ -130,7 +144,7 @@ class ListTools extends Component {
 
         {tools.toolModalOpen && (
           <Modal size="big">
-            <h1>Add new tool</h1>
+            {!!data ? <h1>Edit tool</h1> : <h1>Add new tool</h1>}
 
             <form onSubmit={handleSubmit}>
               <span>Tool Name</span>
@@ -167,7 +181,7 @@ class ListTools extends Component {
                   Salvar
                 </Button>
 
-                <Button size="big" color="grey" onClick={closeToolModal}>
+                <Button size="big" color="grey" onClick={this.closeEditModalId}>
                   Fechar
                 </Button>
               </div>
