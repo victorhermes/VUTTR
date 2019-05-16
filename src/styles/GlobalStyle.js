@@ -1,6 +1,7 @@
+import { connect } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
     * {
@@ -8,9 +9,11 @@ export default createGlobalStyle`
         margin: 0;
         outline: 0;
         box-sizing: border-box;
+
     }
 
     body {
+        overflow: ${props => (props.tools.toolModalOpen ? 'hidden' : '')};
         background: #31225F;
         color: #FFF;
         font-family: 'Source Sans Pro', sans-serif;
@@ -30,3 +33,12 @@ export default createGlobalStyle`
         cursor: pointer;
     }
 `;
+
+const mapStateToProps = state => ({
+  tools: state.tools,
+});
+
+export default connect(
+  mapStateToProps,
+  null,
+)(GlobalStyle);

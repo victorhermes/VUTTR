@@ -1,20 +1,16 @@
-import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators, compose } from 'redux';
-import * as Yup from 'yup';
-
-import api from '~/services/api';
+import { bindActionCreators } from 'redux';
 
 import ToolsActions from '~/store/ducks/tools';
 
-import Erro from '~/styles/Error';
+import ModalButton from '~/styles/Button';
 
 import Modal from '../Modal';
 import IconPlusCircle from './img/Icon-Plus-Circle.svg';
 import {
-  Container, ToolSection, ToolHeader, Header, Tags, Search, Button,
+  Container, ToolSection, ToolHeader, Header, Tags, Search,
 } from './styles';
 
 class ListTools extends Component {
@@ -22,21 +18,6 @@ class ListTools extends Component {
     getToolRequest: PropTypes.func.isRequired,
     deleteToolRequest: PropTypes.func.isRequired,
     openToolModal: PropTypes.func.isRequired,
-    closeToolModal: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
-    errors: PropTypes.shape({
-      title: PropTypes.string,
-      link: PropTypes.string,
-      description: PropTypes.string,
-      tag: PropTypes.string,
-    }).isRequired,
-    values: PropTypes.shape({
-      title: PropTypes.string,
-      link: PropTypes.string,
-      description: PropTypes.string,
-      tag: PropTypes.string,
-    }).isRequired,
     tools: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
@@ -52,7 +33,6 @@ class ListTools extends Component {
 
   state = {
     search: '',
-    data: '',
   };
 
   componentDidMount() {
@@ -64,31 +44,15 @@ class ListTools extends Component {
     this.setState({ search: e.target.value });
   };
 
-  getId = (e) => {
+  deleteTool = (e) => {
     const { deleteToolRequest } = this.props;
     const id = e.target.value;
     deleteToolRequest(id);
   };
 
-  openEditModalId = async (e) => {
-    const { openToolModal } = this.props;
-    openToolModal();
-    const id = e.target.value;
-    const { data } = await api.get(`/tools/${id}`);
-    this.setState({ data });
-  };
-
-  closeEditModalId = () => {
-    const { closeToolModal } = this.props;
-    this.setState({ data: '' });
-    closeToolModal();
-  };
-
   render() {
-    const {
-      handleChange, values, handleSubmit, errors, tools, openToolModal,
-    } = this.props;
-    const { data, search } = this.state;
+    const { tools, openToolModal } = this.props;
+    const { search } = this.state;
 
     const filterTool = tools.data.filter(
       tool => tool.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
@@ -97,7 +61,6 @@ class ListTools extends Component {
 
     return (
       <Container>
-        {console.log(data)}
         <Header>
           <Search>
             <input type="text" placeholder="Procurar ferramenta" onChange={this.onChangeFilter} />
@@ -107,9 +70,9 @@ class ListTools extends Component {
               <p>Procurar por tags?</p>
             </div>
           </Search>
-          <Button onClick={openToolModal}>
+          <ModalButton onClick={openToolModal}>
             <img src={IconPlusCircle} alt="Adicionar item" />
-          </Button>
+          </ModalButton>
         </Header>
 
         {filterTool.length ? (
@@ -120,10 +83,10 @@ class ListTools extends Component {
                   <h1> {tool.title}</h1>
                 </a>
                 <div>
-                  <button type="button" value={tool.id} onClick={this.openEditModalId}>
+                  <button type="button" value={tool.id} onClick={openToolModal}>
                     EDITAR
                   </button>
-                  <button type="button" value={tool.id} onClick={this.getId}>
+                  <button type="button" value={tool.id} onClick={this.deleteTool}>
                     X
                   </button>
                 </div>
@@ -142,52 +105,7 @@ class ListTools extends Component {
           <h2 align="center">Ferramenta não existe!</h2>
         )}
 
-        {tools.toolModalOpen && (
-          <Modal size="big">
-            {!!data ? <h1>Edit tool</h1> : <h1>Add new tool</h1>}
-
-            <form onSubmit={handleSubmit}>
-              <span>Tool Name</span>
-
-              <input name="title" onChange={handleChange} value={values.title} />
-
-              {!!errors.title && <Erro>{errors.title}</Erro>}
-
-              <span>Tool Link</span>
-
-              <input name="link" onChange={handleChange} value={values.link} />
-
-              {!!errors.link && <Erro>{errors.link}</Erro>}
-
-              <span>Tool Description</span>
-
-              <textarea
-                name="description"
-                onChange={handleChange}
-                value={values.description}
-                rows="2"
-              />
-
-              {!!errors.description && <Erro>{errors.description}</Erro>}
-
-              <span>Tags</span>
-
-              <input name="tags" onChange={handleChange} value={values.tags} />
-
-              {!!errors.tags && <Erro>{errors.tags}</Erro>}
-
-              <div>
-                <Button size="big" type="submit">
-                  Salvar
-                </Button>
-
-                <Button size="big" color="grey" onClick={this.closeEditModalId}>
-                  Fechar
-                </Button>
-              </div>
-            </form>
-          </Modal>
-        )}
+        {tools.toolModalOpen && <Modal />}
       </Container>
     );
   }
@@ -199,52 +117,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(ToolsActions, dispatch);
 
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
-  withFormik({
-    mapPropsToValues: () => ({
-      title: '',
-      link: '',
-      description: '',
-      tags: [''],
-    }),
-
-    validateOnChange: true,
-    validateOnBlur: false,
-
-    validationSchema: Yup.object().shape({
-      title: Yup.string()
-        .required('Campo obrigatório')
-        .min(1, 'Título muito curto')
-        .max(20, 'Título muito comprido'),
-      link: Yup.string()
-        .required('Campo obrigatório')
-        .url('URL inválida'),
-      description: Yup.string()
-        .required('Campo obrigatório')
-        .min(20, 'Descrição muito curto')
-        .max(600, 'Descrição muito comprida'),
-      tags: Yup.string()
-        .required('Campo obrigatório')
-        .min(2, 'Tag muito curta')
-        .max(100, 'Tag muito comprida'),
-    }),
-
-    handleSubmit: (values, { props, resetForm }) => {
-      const {
-        title, link, description, tags,
-      } = values;
-
-      const tgs = tags.split(',').map(item => item.trim());
-
-      const { createToolRequest } = props;
-
-      createToolRequest(title, link, description, tgs);
-
-      resetForm();
-    },
-  }),
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
 )(ListTools);

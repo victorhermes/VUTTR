@@ -26,27 +26,15 @@
       "id": 4
     },
     {
-      "title": "React",
-      "link": "https://github.com/facebook/react",
-      "description": "A declarative, efficient, and flexible JavaScript library for building user interfaces. ",
+      "title": "nodemon",
+      "link": "https://nodemon.com.br",
+      "description": "just a tool to maximazie",
       "tags": [
-        "react",
-        "web",
-        "library",
-        "interfaces"
+        "yo",
+        "good",
+        "tools"
       ],
       "id": 5
-    },
-    {
-      "title": "Node",
-      "link": "https://node.com",
-      "description": "Node is cool! I love <3",
-      "tags": [
-        "node",
-        "react",
-        "api-rest"
-      ],
-      "id": 6
     }
   ]
 }
