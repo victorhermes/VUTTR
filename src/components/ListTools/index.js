@@ -35,7 +35,7 @@ class ListTools extends Component {
 
   state = {
     search: '',
-    id: null
+    id: null,
   };
 
   componentDidMount() {
@@ -60,7 +60,7 @@ class ListTools extends Component {
     const response = await api.get(`tools/${id}`);
     console.log(response.data); */
     const id = e.target.value;
-    this.setState({id})
+    this.setState({ id });
   };
 
   render() {

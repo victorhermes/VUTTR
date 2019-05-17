@@ -47,7 +47,7 @@ class Modal extends Component {
 
   render() {
     const {
-      handleChange, values, handleSubmit, errors, closeToolModal
+      handleChange, values, handleSubmit, errors, closeToolModal,
     } = this.props;
 
     return (
