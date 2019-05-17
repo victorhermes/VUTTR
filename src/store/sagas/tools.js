@@ -36,3 +36,21 @@ export function* deleteRequest({ id }) {
     console.log(err);
   }
 }
+
+export function* editRequest({
+  id, title, link, description, tags,
+}) {
+  try {
+    const response = yield call(api.put, `tools/${id}`, {
+      title,
+      link,
+      description,
+      tags,
+    });
+
+    yield put(ToolsActions.editToolSuccess(id, response.data));
+    yield put(ToolsActions.closeToolModal());
+  } catch (err) {
+    console.log(err);
+  }
+}

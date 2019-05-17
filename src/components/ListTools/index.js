@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+/* import api from '~/services/api'; */
+
 import ToolsActions from '~/store/ducks/tools';
 
 import ModalButton from '~/styles/Button';
@@ -33,6 +35,7 @@ class ListTools extends Component {
 
   state = {
     search: '',
+    id: null
   };
 
   componentDidMount() {
@@ -50,9 +53,19 @@ class ListTools extends Component {
     deleteToolRequest(id);
   };
 
+  editTool = async (e) => {
+    const { openToolModal } = this.props;
+    openToolModal();
+    /* const id = e.target.value;
+    const response = await api.get(`tools/${id}`);
+    console.log(response.data); */
+    const id = e.target.value;
+    this.setState({id})
+  };
+
   render() {
     const { tools, openToolModal } = this.props;
-    const { search } = this.state;
+    const { search, id } = this.state;
 
     const filterTool = tools.data.filter(
       tool => tool.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
@@ -83,7 +96,7 @@ class ListTools extends Component {
                   <h1> {tool.title}</h1>
                 </a>
                 <div>
-                  <button type="button" value={tool.id} onClick={openToolModal}>
+                  <button type="button" value={tool.id} onClick={this.editTool}>
                     EDITAR
                   </button>
                   <button type="button" value={tool.id} onClick={this.deleteTool}>
@@ -105,7 +118,7 @@ class ListTools extends Component {
           <h2 align="center">Ferramenta não existe!</h2>
         )}
 
-        {tools.toolModalOpen && <Modal />}
+        {tools.toolModalOpen && <Modal editTool={id} />}
       </Container>
     );
   }

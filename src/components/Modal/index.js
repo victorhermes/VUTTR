@@ -47,7 +47,7 @@ class Modal extends Component {
 
   render() {
     const {
-      handleChange, values, handleSubmit, errors, closeToolModal,
+      handleChange, values, handleSubmit, errors, closeToolModal
     } = this.props;
 
     return (
@@ -147,9 +147,9 @@ export default compose(
       } = values;
 
       const tgs = tags.split(',').map(item => item.trim());
-
-      const { createToolRequest } = props;
-      createToolRequest(title, link, description, tgs);
+      const id = props.editTool;
+      const { editToolRequest } = props;
+      editToolRequest(id, title, link, description, tgs);
 
       resetForm();
     },
