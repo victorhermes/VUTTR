@@ -101,11 +101,11 @@ class ListTools extends Component {
 
               <p>{tool.description}</p>
 
-              <Tags>
+              {/*<Tags>
                 {tool.tags.map(tag => (
                   <span key={Math.random() + tag}>#{tag}</span>
                 ))}
-              </Tags>
+                </Tags>*/}
             </ToolSection>
           ))
         ) : (

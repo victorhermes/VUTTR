@@ -1,43 +1,29 @@
 {
   "tools": [
     {
-      "title": "adoro 123",
-      "link": "https://station.rocketseat.com.br/",
-      "description": "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasd",
+      "title": "eu doanao",
+      "link": "https://github.com/maprihoda/react-redux-crud/blob/master/client/src/components/posts/EditPostPage.js",
+      "description": "askdaskdkaskdaskdaskdaskdask",
       "tags": [
-        "asdaa",
-        "12"
+        "amodo"
       ],
       "id": 3
     },
     {
-      "title": "formik",
-      "link": "https://codeburst.io/redux-a-crud-example-abb834d763c9",
-      "description": "formik is better than everyhitn",
+      "title": "vamos nenem",
+      "link": "https://blog.rocketseat.com.br/",
+      "description": "https://blog.rocketseat.com.br/",
       "tags": [
-        "formik",
-        "cool"
-      ],
-      "id": 4
-    },
-    {
-      "title": "nodemon parte dois",
-      "link": "https://nodemonalterado.com.br/",
-      "description": "asdkaskdkasdkaskdaskdas",
-      "tags": [
-        "nodemon",
-        "react",
-        "production"
+        "qwert"
       ],
       "id": 5
     },
     {
-      "title": "Moom Studio",
-      "link": "https://station.rocketseat.com.br/lives",
-      "description": "dkasdkaskdksadkaskdsakd",
+      "title": "monasodjka",
+      "link": "https://blog.rocketseat.com.br/",
+      "description": "https://blog.rocketseat.com.br/",
       "tags": [
-        "moom",
-        "studio"
+        "asjdjasd"
       ],
       "id": 6
     }

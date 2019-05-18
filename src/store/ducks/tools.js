@@ -38,7 +38,7 @@ export const closeModal = state => state.merge({ toolModalOpen: false });
 
 export const deleteSuccess = (state, { id }) => state.merge({
   ...state,
-  data: state.data.filter(data => data.id !== parseInt(id)),
+  data: state.data.filter(data => data.id !== parseInt(id, 0)),
 });
 
 export const editSuccess = (state, { id, data }) => state.merge({
