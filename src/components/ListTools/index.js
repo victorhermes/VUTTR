@@ -2,14 +2,11 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-import api from '~/services/api';
-
 import ToolsActions from '~/store/ducks/tools';
 
 import ModalButton from '~/styles/Button';
 
-import Modal from '../Modal';
+import ModalAdd from '../ModalAdd';
 import IconPlusCircle from './img/Icon-Plus-Circle.svg';
 import {
   Container, ToolSection, ToolHeader, Header, Tags, Search,
@@ -34,7 +31,6 @@ class ListTools extends Component {
   };
 
   componentDidMount() {
-    localStorage.clear();
     const { getToolRequest } = this.props;
     getToolRequest();
   }
@@ -49,17 +45,11 @@ class ListTools extends Component {
     deleteToolRequest(id);
   };
 
-  editTool = async (e) => {
-    const id = e.target.value;
-    const response = await api.get(`tools/${id}`);
-    localStorage.setItem('@VUTTR:id', response.data.id);
-    localStorage.setItem('@VUTTR:title', response.data.title);
-    localStorage.setItem('@VUTTR:link', response.data.link);
-    localStorage.setItem('@VUTTR:description', response.data.description);
-    localStorage.setItem('@VUTTR:tags', response.data.tags);
-    const { openToolModal } = this.props;
-    openToolModal();
-  };
+  filterTools = async (e) => {
+    const word = e.target.value;
+    const { getToolRequest } = this.props;
+    getToolRequest(word);
+  }
 
   render() {
     const { tools, openToolModal } = this.props;
@@ -73,7 +63,7 @@ class ListTools extends Component {
       <Container>
         <Header>
           <Search>
-            <input type="text" placeholder="Procurar ferramenta" onChange={this.onChangeFilter} />
+            <input type="text" placeholder="Procurar ferramenta" onChange={this.filterTools} />
 
             <div>
               <input type="checkbox" onChange={this.onChangeTag} />
@@ -93,7 +83,7 @@ class ListTools extends Component {
                   <h1> {tool.title}</h1>
                 </a>
                 <div>
-                  <button type="button" value={tool.id} onClick={this.editTool}>
+                  <button type="button" value={tool.id} onClick={() => {}}>
                     EDITAR
                   </button>
                   <button type="button" value={tool.id} onClick={this.deleteTool}>
@@ -115,7 +105,7 @@ class ListTools extends Component {
           <h2 align="center">Ferramenta não existe!</h2>
         )}
 
-        {tools.toolModalOpen && <Modal />}
+        {tools.toolModalOpen && <ModalAdd />}
       </Container>
     );
   }
