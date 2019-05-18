@@ -15,6 +15,7 @@ import { Container, Content } from './styles';
 
 class Modal extends Component {
   static propTypes = {
+    editTool: PropTypes.func.isRequired,
     closeToolModal: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
@@ -43,17 +44,21 @@ class Modal extends Component {
     }).isRequired,
   };
 
-  componentDidMount() {}
+  closeTool = () => {
+    const { closeToolModal } = this.props;
+    closeToolModal();
+    localStorage.setItem('@VUTTR', '');
+  }
 
   render() {
     const {
-      handleChange, values, handleSubmit, errors, closeToolModal,
+      handleChange, values, handleSubmit, errors, editTool,
     } = this.props;
 
     return (
       <Container>
         <Content size="big">
-          <h1>Edit tool</h1>
+          {editTool ? <h1>Edit tool</h1> : <h1>Add tool</h1> }
 
           <form onSubmit={handleSubmit}>
             <span>Tool Name</span>
@@ -90,7 +95,7 @@ class Modal extends Component {
                 Salvar
               </ModalButton>
 
-              <ModalButton type="button" size="big" color="grey" onClick={closeToolModal}>
+              <ModalButton type="button" size="big" color="grey" onClick={this.closeTool}>
                 Fechar
               </ModalButton>
             </div>
@@ -145,11 +150,14 @@ export default compose(
       const {
         title, link, description, tags,
       } = values;
-
+      const { createToolRequest, editToolRequest } = props;
       const tgs = tags.split(',').map(item => item.trim());
       const id = props.editTool;
-      const { editToolRequest } = props;
-      editToolRequest(id, title, link, description, tgs);
+      if (id) {
+        editToolRequest(id, title, link, description, tgs);
+      } else {
+        createToolRequest(title, link, description, tgs);
+      }
 
       resetForm();
     },

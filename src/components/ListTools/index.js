@@ -33,19 +33,14 @@ class ListTools extends Component {
     }).isRequired,
   };
 
-  state = {
-    search: '',
-    id: null,
-  };
-
   componentDidMount() {
     const { getToolRequest } = this.props;
     getToolRequest();
   }
 
-  onChangeFilter = (e) => {
+  /* onChangeFilter = (e) => {
     this.setState({ search: e.target.value });
-  };
+  }; */
 
   deleteTool = (e) => {
     const { deleteToolRequest } = this.props;
@@ -60,17 +55,16 @@ class ListTools extends Component {
     const response = await api.get(`tools/${id}`);
     console.log(response.data); */
     const id = e.target.value;
-    this.setState({ id });
+    localStorage.setItem('@VUTTR', id);
   };
 
   render() {
     const { tools, openToolModal } = this.props;
-    const { search, id } = this.state;
 
-    const filterTool = tools.data.filter(
+    /* const filterTool = tools.data.filter(
       tool => tool.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
         || tool.description.toLowerCase().indexOf(search.toLowerCase()) !== -1,
-    );
+    ); */
 
     return (
       <Container>
@@ -88,8 +82,8 @@ class ListTools extends Component {
           </ModalButton>
         </Header>
 
-        {filterTool.length ? (
-          filterTool.map(tool => (
+        {tools.data.length ? (
+          tools.data.map(tool => (
             <ToolSection key={tool.id}>
               <ToolHeader>
                 <a href={tool.link}>
@@ -118,7 +112,7 @@ class ListTools extends Component {
           <h2 align="center">Ferramenta não existe!</h2>
         )}
 
-        {tools.toolModalOpen && <Modal editTool={id} />}
+        {tools.toolModalOpen && <Modal editTool={localStorage.getItem('@VUTTR')} />}
       </Container>
     );
   }

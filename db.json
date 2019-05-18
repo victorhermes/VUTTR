@@ -1,23 +1,22 @@
 {
   "tools": [
     {
-      "title": "eu gamo do flarcos",
-      "link": "https://codeburst.io/redux-a-crud-example-abb834d763c9",
-      "description": "fasdkasksakasdkaskask",
+      "title": "adoro 123",
+      "link": "https://station.rocketseat.com.br/",
+      "description": "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasd",
       "tags": [
-        "gamamos",
-        "no",
-        "flarcos"
+        "asdaa",
+        "12"
       ],
       "id": 3
     },
     {
-      "title": "asdasd para 1239123",
+      "title": "formik",
       "link": "https://codeburst.io/redux-a-crud-example-abb834d763c9",
-      "description": "asdasdasdasdasdasdasdas",
+      "description": "formik is better than everyhitn",
       "tags": [
-        "odio",
-        "amor"
+        "formik",
+        "cool"
       ],
       "id": 4
     },
@@ -31,6 +30,16 @@
         "production"
       ],
       "id": 5
+    },
+    {
+      "title": "Moom Studio",
+      "link": "https://station.rocketseat.com.br/lives",
+      "description": "dkasdkaskdksadkaskdsakd",
+      "tags": [
+        "moom",
+        "studio"
+      ],
+      "id": 6
     }
   ]
 }
