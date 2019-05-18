@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-/* import api from '~/services/api'; */
+import api from '~/services/api';
 
 import ToolsActions from '~/store/ducks/tools';
 
@@ -34,6 +34,7 @@ class ListTools extends Component {
   };
 
   componentDidMount() {
+    localStorage.clear();
     const { getToolRequest } = this.props;
     getToolRequest();
   }
@@ -49,13 +50,15 @@ class ListTools extends Component {
   };
 
   editTool = async (e) => {
+    const id = e.target.value;
+    const response = await api.get(`tools/${id}`);
+    localStorage.setItem('@VUTTR:id', response.data.id);
+    localStorage.setItem('@VUTTR:title', response.data.title);
+    localStorage.setItem('@VUTTR:link', response.data.link);
+    localStorage.setItem('@VUTTR:description', response.data.description);
+    localStorage.setItem('@VUTTR:tags', response.data.tags);
     const { openToolModal } = this.props;
     openToolModal();
-    /* const id = e.target.value;
-    const response = await api.get(`tools/${id}`);
-    console.log(response.data); */
-    const id = e.target.value;
-    localStorage.setItem('@VUTTR', id);
   };
 
   render() {
@@ -101,18 +104,18 @@ class ListTools extends Component {
 
               <p>{tool.description}</p>
 
-              {/*<Tags>
+              <Tags>
                 {tool.tags.map(tag => (
                   <span key={Math.random() + tag}>#{tag}</span>
                 ))}
-                </Tags>*/}
+              </Tags>
             </ToolSection>
           ))
         ) : (
           <h2 align="center">Ferramenta não existe!</h2>
         )}
 
-        {tools.toolModalOpen && <Modal editTool={localStorage.getItem('@VUTTR')} />}
+        {tools.toolModalOpen && <Modal />}
       </Container>
     );
   }

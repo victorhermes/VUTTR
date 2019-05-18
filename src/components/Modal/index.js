@@ -15,7 +15,6 @@ import { Container, Content } from './styles';
 
 class Modal extends Component {
   static propTypes = {
-    editTool: PropTypes.string.isRequired,
     closeToolModal: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
@@ -45,21 +44,20 @@ class Modal extends Component {
   };
 
   closeTool = () => {
+    localStorage.clear();
     const { closeToolModal } = this.props;
     closeToolModal();
-    localStorage.setItem('@VUTTR', '');
   }
 
   render() {
     const {
-      handleChange, values, handleSubmit, errors, editTool,
+      handleChange, values, handleSubmit, errors,
     } = this.props;
 
     return (
       <Container>
         <Content size="big">
-          {editTool ? <h1>Edit tool</h1> : <h1>Add tool</h1> }
-
+          { localStorage.getItem('@VUTTR:id') ? <h1>Edit tool</h1> : <h1>Add tool</h1> }
           <form onSubmit={handleSubmit}>
             <span>Tool Name</span>
 
@@ -119,10 +117,10 @@ export default compose(
   ),
   withFormik({
     mapPropsToValues: () => ({
-      title: '',
-      link: '',
-      description: '',
-      tags: [''],
+      title: localStorage.getItem('@VUTTR:title'),
+      link: localStorage.getItem('@VUTTR:link'),
+      description: localStorage.getItem('@VUTTR:description'),
+      tags: [localStorage.getItem('@VUTTR:tags')],
     }),
 
     validateOnChange: true,
@@ -151,8 +149,8 @@ export default compose(
         title, link, description, tags,
       } = values;
       const { createToolRequest, editToolRequest } = props;
-      const tgs = tags.split(',').map(item => item.trim());
-      const id = props.editTool;
+      const tgs = tags.map(item => item);
+      const id = localStorage.getItem('@VUTTR:id');
       if (id) {
         editToolRequest(id, title, link, description, tgs);
       } else {
