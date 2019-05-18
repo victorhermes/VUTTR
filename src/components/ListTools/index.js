@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import ToolsActions from '~/store/ducks/tools';
 
 import ModalButton from '~/styles/Button';
@@ -35,10 +36,6 @@ class ListTools extends Component {
     getToolRequest();
   }
 
-  /* onChangeFilter = (e) => {
-    this.setState({ search: e.target.value });
-  }; */
-
   deleteTool = (e) => {
     const { deleteToolRequest } = this.props;
     const id = e.target.value;
@@ -53,11 +50,6 @@ class ListTools extends Component {
 
   render() {
     const { tools, openToolModal } = this.props;
-
-    /* const filterTool = tools.data.filter(
-      tool => tool.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
-        || tool.description.toLowerCase().indexOf(search.toLowerCase()) !== -1,
-    ); */
 
     return (
       <Container>
