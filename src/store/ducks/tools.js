@@ -42,7 +42,7 @@ export const deleteSuccess = (state, { id }) => state.merge({
 });
 
 export const editSuccess = (state, { id, data }) => state.merge({
-  data: state.data.map(tool => (tool.id === id ? { ...tool, data } : tool)),
+  data: state.data.map(tool => (localStorage.getItem('@VUTTR') === id ? { ...tool, data } : tool)),
 });
 
 /* Reducers to types */
