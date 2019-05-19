@@ -14,7 +14,6 @@ export function* getAllTools({ word }) {
 
   if (word) {
     response = yield call(api.get, `/tools?q=${word}`);
-    console.log('caiu no primerio');
   } else {
     response = yield call(api.get, '/tools');
   }
@@ -27,7 +26,6 @@ export function* getTagTools({ word }) {
 
   if (word) {
     response = yield call(api.get, `/tools?tags_like=${word}`);
-    console.log('caiu no segundo');
   } else {
     response = yield call(api.get, '/tools');
   }
