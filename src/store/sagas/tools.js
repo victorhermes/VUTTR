@@ -3,11 +3,18 @@ import { call, put } from 'redux-saga/effects';
 import api from '../../services/api';
 import ToolsActions from '../ducks/tools';
 
-export function* getTools({ word }) {
+export function* getTools() {
+  const response = yield call(api.get, '/tools');
+
+  yield put(ToolsActions.getToolSuccess(response.data));
+}
+
+export function* getAllTools({ word }) {
   let response = {};
 
   if (word) {
     response = yield call(api.get, `/tools?q=${word}`);
+    console.log('caiu no primerio');
   } else {
     response = yield call(api.get, '/tools');
   }
@@ -15,14 +22,17 @@ export function* getTools({ word }) {
   yield put(ToolsActions.getToolSuccess(response.data));
 }
 
-export function* getToolsByTag({ word, tag }) {
-  if (tag) {
-    const response = yield call(api.get, `/tools?tags_like=${word}`);
-    yield put(ToolsActions.getToolSuccess(response.data));
+export function* getTagTools({ word }) {
+  let response = {};
+
+  if (word) {
+    response = yield call(api.get, `/tools?tags_like=${word}`);
+    console.log('caiu no segundo');
   } else {
-    const response = yield call(api.get, '/tools');
-    yield put(ToolsActions.getToolSuccess(response.data));
+    response = yield call(api.get, '/tools');
   }
+
+  yield put(ToolsActions.getToolSuccess(response.data));
 }
 
 export function* createTools({

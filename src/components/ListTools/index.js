@@ -16,6 +16,8 @@ import {
 class ListTools extends Component {
   static propTypes = {
     getToolRequest: PropTypes.func.isRequired,
+    getAllToolRequest: PropTypes.func.isRequired,
+    getByTagToolRequest: PropTypes.func.isRequired,
     deleteToolRequest: PropTypes.func.isRequired,
     openToolModal: PropTypes.func.isRequired,
     tools: PropTypes.shape({
@@ -31,6 +33,10 @@ class ListTools extends Component {
     }).isRequired,
   };
 
+  state = {
+    checkTag: false,
+  }
+
   componentDidMount() {
     const { getToolRequest } = this.props;
     getToolRequest();
@@ -43,22 +49,35 @@ class ListTools extends Component {
   };
 
   filterTools = (e) => {
-    const { getToolRequest } = this.props;
+    const { getAllToolRequest } = this.props;
     const word = e.target.value;
-    getToolRequest(word);
+    getAllToolRequest(word);
+  }
+
+  filterByTagTools = (e) => {
+    const { getByTagToolRequest } = this.props;
+    const word = e.target.value;
+    getByTagToolRequest(word);
+  }
+
+  getCheck = (e) => {
+    const checkTag = e.target.checked;
+    this.setState({ checkTag });
+    console.log(checkTag);
   }
 
   render() {
     const { tools, openToolModal } = this.props;
+    const { checkTag } = this.state;
 
     return (
       <Container>
         <Header>
           <Search>
-            <input type="text" placeholder="Procurar ferramenta" onChange={this.filterTools} />
+            <input type="text" placeholder="Procurar ferramenta" onChange={!checkTag ? this.filterTools : this.filterByTagTools} />
 
             <div>
-              <input type="checkbox" onClick={() => {}} />
+              <input type="checkbox" onClick={this.getCheck} />
               <p>Procurar por tags?</p>
             </div>
           </Search>
