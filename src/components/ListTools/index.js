@@ -42,9 +42,9 @@ class ListTools extends Component {
     deleteToolRequest(id);
   };
 
-  filterTools = async (e) => {
-    const word = e.target.value;
+  filterTools = (e) => {
     const { getToolRequest } = this.props;
+    const word = e.target.value;
     getToolRequest(word);
   }
 
@@ -58,7 +58,7 @@ class ListTools extends Component {
             <input type="text" placeholder="Procurar ferramenta" onChange={this.filterTools} />
 
             <div>
-              <input type="checkbox" onChange={this.onChangeTag} />
+              <input type="checkbox" onClick={() => {}} />
               <p>Procurar por tags?</p>
             </div>
           </Search>

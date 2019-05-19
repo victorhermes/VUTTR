@@ -4,11 +4,23 @@ import api from '../../services/api';
 import ToolsActions from '../ducks/tools';
 
 export function* getTools({ word }) {
+  let response = {};
+
   if (word) {
-    const response = yield call(api.get, `/tools?q=${word}`);
+    response = yield call(api.get, `/tools?q=${word}`);
+  } else {
+    response = yield call(api.get, '/tools');
+  }
+
+  yield put(ToolsActions.getToolSuccess(response.data));
+}
+
+export function* getToolsByTag({ word, tag }) {
+  if (tag) {
+    const response = yield call(api.get, `/tools?tags_like=${word}`);
     yield put(ToolsActions.getToolSuccess(response.data));
   } else {
-    const response = yield call(api.get, 'tools');
+    const response = yield call(api.get, '/tools');
     yield put(ToolsActions.getToolSuccess(response.data));
   }
 }

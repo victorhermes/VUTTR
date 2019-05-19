@@ -6,6 +6,7 @@ import Immutable from 'seamless-immutable';
 const { Types, Creators } = createActions({
   getToolRequest: ['word'],
   getToolSuccess: ['data'],
+  getAllToolRequest: ['word', 'tag'],
   createToolRequest: ['title', 'link', 'description', 'tags'],
   createToolSuccess: ['data'],
   deleteToolRequest: ['id'],
