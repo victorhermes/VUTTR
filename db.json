@@ -29,6 +29,18 @@
         "victor"
       ],
       "id": 12
+    },
+    {
+      "title": "nodemon",
+      "link": "https://nodemon.com.br",
+      "description": "nodemon is cool to understand ",
+      "tags": [
+        "nodemon",
+        "react",
+        "native",
+        "nodemon1"
+      ],
+      "id": 13
     }
   ]
 }

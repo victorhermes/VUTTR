@@ -63,7 +63,6 @@ class ListTools extends Component {
   getCheck = (e) => {
     const checkTag = e.target.checked;
     this.setState({ checkTag });
-    console.log(checkTag);
   }
 
   render() {
