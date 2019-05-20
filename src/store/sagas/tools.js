@@ -45,7 +45,7 @@ export function* createTools({
     });
 
     yield put(ToolsActions.createToolSuccess(response.data));
-    yield put(ToolsActions.closeToolModal());
+    yield put(ToolsActions.closeAddToolModal());
   } catch (err) {
     console.tron.log(err);
   }
@@ -73,7 +73,7 @@ export function* editRequest({
     });
 
     yield put(ToolsActions.editToolSuccess(id, response.data));
-    yield put(ToolsActions.closeToolModal());
+    yield put(ToolsActions.closeEditToolModal());
   } catch (err) {
     console.log(err);
   }

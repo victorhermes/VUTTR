@@ -14,8 +14,10 @@ const { Types, Creators } = createActions({
   deleteToolSuccess: ['id'],
   editToolRequest: ['id', 'title', 'link', 'description', 'tags'],
   editToolSuccess: ['id', 'data'],
-  openToolModal: null,
-  closeToolModal: null,
+  openAddToolModal: null,
+  closeAddToolModal: null,
+  openEditToolModal: null,
+  closeEditToolModal: null,
 });
 
 export const ToolsTypes = Types;
@@ -34,9 +36,13 @@ export const createSuccess = (state, { data }) => state.merge({ data: [...state.
 
 export const success = (state, { data }) => state.merge({ data });
 
-export const openModal = state => state.merge({ toolModalOpen: true });
+export const openAddModal = state => state.merge({ openAddToolModal: true });
 
-export const closeModal = state => state.merge({ toolModalOpen: false });
+export const closeAddModal = state => state.merge({ openAddToolModal: false });
+
+export const openEditModal = state => state.merge({ openEditToolModal: true });
+
+export const closeEditModal = state => state.merge({ openEditToolModal: false });
 
 export const deleteSuccess = (state, { id }) => state.merge({
   ...state,
@@ -44,15 +50,21 @@ export const deleteSuccess = (state, { id }) => state.merge({
 });
 
 export const editSuccess = (state, { id, data }) => state.merge({
-  data: state.data.map(tool => (localStorage.getItem('@VUTTR:id') === id ? { ...tool, data } : tool)),
+  data: state.data.map(tool => (tool.id === parseInt(id, 0)
+    ? {
+      ...tool, title: data.title, description: data.description, tags: data.tags,
+    }
+    : tool)),
 });
 
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_TOOL_SUCCESS]: success,
-  [Types.OPEN_TOOL_MODAL]: openModal,
-  [Types.CLOSE_TOOL_MODAL]: closeModal,
+  [Types.OPEN_ADD_TOOL_MODAL]: openAddModal,
+  [Types.CLOSE_ADD_TOOL_MODAL]: closeAddModal,
+  [Types.OPEN_EDIT_TOOL_MODAL]: openEditModal,
+  [Types.CLOSE_EDIT_TOOL_MODAL]: closeEditModal,
   [Types.CREATE_TOOL_SUCCESS]: createSuccess,
   [Types.DELETE_TOOL_SUCCESS]: deleteSuccess,
   [Types.EDIT_TOOL_SUCCESS]: editSuccess,

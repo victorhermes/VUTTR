@@ -13,9 +13,9 @@ import Erro from '~/styles/Error';
 
 import { Container, Content } from './styles';
 
-class ModalAdd extends Component {
+class ModalEdit extends Component {
   static propTypes = {
-    closeAddToolModal: PropTypes.func.isRequired,
+    closeEditToolModal: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     values: PropTypes.shape({
@@ -44,8 +44,8 @@ class ModalAdd extends Component {
   };
 
   closeTool = () => {
-    const { closeAddToolModal } = this.props;
-    closeAddToolModal();
+    const { closeEditToolModal } = this.props;
+    closeEditToolModal();
   }
 
   render() {
@@ -56,7 +56,7 @@ class ModalAdd extends Component {
     return (
       <Container>
         <Content size="big">
-          <h1>Add tool</h1>
+          <h1>Edit tool</h1>
           <form onSubmit={handleSubmit}>
             <span>Tool Name</span>
 
@@ -116,9 +116,9 @@ export default compose(
   ),
   withFormik({
     mapPropsToValues: () => ({
-      title: '',
-      link: 'https://',
-      description: '',
+      title: 'adakdaskdas',
+      link: 'https://asdasd.com',
+      description: 'sadasjdasjdjasdjasjdjasjdjasdjasjdjasdjasjdjasdjs',
       tags: [''],
     }),
 
@@ -147,11 +147,12 @@ export default compose(
       const {
         title, link, description, tags,
       } = values;
-      const { createToolRequest } = props;
+      const { editToolRequest } = props;
+      const { id } = props;
       const tgs = tags.split(',').map(item => item.trim());
-      createToolRequest(title, link, description, tgs);
+      editToolRequest(id, title, link, description, tgs);
 
       resetForm();
     },
   }),
-)(ModalAdd);
+)(ModalEdit);

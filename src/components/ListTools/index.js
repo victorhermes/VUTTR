@@ -8,6 +8,7 @@ import ToolsActions from '~/store/ducks/tools';
 import ModalButton from '~/styles/Button';
 
 import ModalAdd from '../ModalAdd';
+import ModalEdit from '../ModalEdit';
 import IconPlusCircle from './img/Icon-Plus-Circle.svg';
 import {
   Container, ToolSection, ToolHeader, Header, Tags, Search,
@@ -19,7 +20,8 @@ class ListTools extends Component {
     getAllToolRequest: PropTypes.func.isRequired,
     getByTagToolRequest: PropTypes.func.isRequired,
     deleteToolRequest: PropTypes.func.isRequired,
-    openToolModal: PropTypes.func.isRequired,
+    openAddToolModal: PropTypes.func.isRequired,
+    openEditToolModal: PropTypes.func.isRequired,
     tools: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
@@ -35,6 +37,7 @@ class ListTools extends Component {
 
   state = {
     checkTag: false,
+    id: null,
   }
 
   componentDidMount() {
@@ -47,6 +50,13 @@ class ListTools extends Component {
     const id = e.target.value;
     deleteToolRequest(id);
   };
+
+  editTool = (e) => {
+    const { openEditToolModal } = this.props;
+    const id = e.target.value;
+    this.setState({ id });
+    openEditToolModal();
+  }
 
   filterTools = (e) => {
     const { getAllToolRequest } = this.props;
@@ -66,8 +76,8 @@ class ListTools extends Component {
   }
 
   render() {
-    const { tools, openToolModal } = this.props;
-    const { checkTag } = this.state;
+    const { tools, openAddToolModal } = this.props;
+    const { checkTag, id } = this.state;
 
     return (
       <Container>
@@ -80,7 +90,7 @@ class ListTools extends Component {
               <p>Procurar por tags?</p>
             </div>
           </Search>
-          <ModalButton onClick={openToolModal}>
+          <ModalButton onClick={openAddToolModal}>
             <img src={IconPlusCircle} alt="Adicionar item" />
           </ModalButton>
         </Header>
@@ -93,7 +103,7 @@ class ListTools extends Component {
                   <h1> {tool.title}</h1>
                 </a>
                 <div>
-                  <button type="button" value={tool.id} onClick={() => {}}>
+                  <button type="button" value={tool.id} onClick={this.editTool}>
                     EDITAR
                   </button>
                   <button type="button" value={tool.id} onClick={this.deleteTool}>
@@ -115,7 +125,8 @@ class ListTools extends Component {
           <h2 align="center">Ferramenta não existe!</h2>
         )}
 
-        {tools.toolModalOpen && <ModalAdd />}
+        {tools.openAddToolModal && <ModalAdd />}
+        {tools.openEditToolModal && <ModalEdit id={id} />}
       </Container>
     );
   }
