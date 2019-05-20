@@ -15,6 +15,8 @@ import { Container, Content } from './styles';
 
 class ModalEdit extends Component {
   static propTypes = {
+    id: PropTypes.number.isRequired,
+    editToolByIdRequest: PropTypes.func.isRequired,
     closeEditToolModal: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
