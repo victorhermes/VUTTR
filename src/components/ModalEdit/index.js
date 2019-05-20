@@ -48,6 +48,12 @@ class ModalEdit extends Component {
     closeEditToolModal();
   }
 
+  /* getById = async () => {
+    const { id } = this.props;
+    const response = await api.get(`/tools/${id}`);
+    this.setState({ title: response.data.title });
+  } */
+
   render() {
     const {
       handleChange, values, handleSubmit, errors,
@@ -115,11 +121,11 @@ export default compose(
     mapDispatchToProps,
   ),
   withFormik({
-    mapPropsToValues: () => ({
-      title: 'adakdaskdas',
-      link: 'https://asdasd.com',
-      description: 'sadasjdasjdjasdjasjdjasjdjasdjasjdjasdjasjdjasdjs',
-      tags: [''],
+    mapPropsToValues: props => ({
+      title: props.tools.unico.title,
+      link: props.tools.unico.link,
+      description: props.tools.unico.description,
+      tags: props.tools.unico.tags,
     }),
 
     validateOnChange: true,

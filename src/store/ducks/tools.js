@@ -27,7 +27,16 @@ export default Creators;
 
 export const INITIAL_STATE = Immutable({
   data: [],
-  toolModalOpen: false,
+  unico: {
+    title: 'nodemon',
+    link: 'https://nodemon.com.br',
+    description:
+      "Yeah, I'm gonna take my horse to the old town road\nI'm gonna ride 'til I can't no more\nI'm gonna take my horse to the old town road",
+    tags: ['tool', 'cli', 'react'],
+    id: 1,
+  },
+  openAddToolModal: false,
+  openEditToolModal: false,
 });
 
 /* Reducers */

@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        overflow: ${props => (props.tools.toolModalOpen ? 'hidden' : '')};
+        overflow: ${props => (props.tools.openEditToolModal || props.tools.openAddToolModal ? 'hidden' : '')};
         background: #31225F;
         color: #FFF;
         font-family: 'Source Sans Pro', sans-serif;
