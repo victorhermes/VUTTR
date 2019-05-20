@@ -78,3 +78,12 @@ export function* editRequest({
     console.log(err);
   }
 }
+
+export function* toolById({ id }) {
+  try {
+    const response = yield call(api.get, `tools/${id}`);
+    yield put(ToolsActions.editToolByIdSuccess(response.data));
+  } catch (err) {
+    console.log(err);
+  }
+}

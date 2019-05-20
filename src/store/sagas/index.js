@@ -8,6 +8,7 @@ import {
   editRequest,
   getAllTools,
   getTagTools,
+  toolById,
 } from './tools';
 
 export default function* rootSaga() {
@@ -18,5 +19,6 @@ export default function* rootSaga() {
     takeLatest(ToolsTypes.EDIT_TOOL_REQUEST, editRequest),
     takeLatest(ToolsTypes.GET_ALL_TOOL_REQUEST, getAllTools),
     takeLatest(ToolsTypes.GET_BY_TAG_TOOL_REQUEST, getTagTools),
+    takeLatest(ToolsTypes.EDIT_TOOL_BY_ID_REQUEST, toolById),
   ]);
 }

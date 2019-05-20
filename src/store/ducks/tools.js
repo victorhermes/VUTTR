@@ -14,6 +14,8 @@ const { Types, Creators } = createActions({
   deleteToolSuccess: ['id'],
   editToolRequest: ['id', 'title', 'link', 'description', 'tags'],
   editToolSuccess: ['id', 'data'],
+  editToolByIdRequest: ['id'],
+  editToolByIdSuccess: ['tool'],
   openAddToolModal: null,
   closeAddToolModal: null,
   openEditToolModal: null,
@@ -26,15 +28,8 @@ export default Creators;
 /* Initial State */
 
 export const INITIAL_STATE = Immutable({
+  tool: {},
   data: [],
-  unico: {
-    title: 'nodemon',
-    link: 'https://nodemon.com.br',
-    description:
-      "Yeah, I'm gonna take my horse to the old town road\nI'm gonna ride 'til I can't no more\nI'm gonna take my horse to the old town road",
-    tags: ['tool', 'cli', 'react'],
-    id: 1,
-  },
   openAddToolModal: false,
   openEditToolModal: false,
 });
@@ -69,6 +64,8 @@ export const editSuccess = (state, { id, data }) => state.merge({
     : tool)),
 });
 
+export const editById = (state, { tool }) => state.merge({ tool });
+
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -80,4 +77,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.CREATE_TOOL_SUCCESS]: createSuccess,
   [Types.DELETE_TOOL_SUCCESS]: deleteSuccess,
   [Types.EDIT_TOOL_SUCCESS]: editSuccess,
+  [Types.EDIT_TOOL_BY_ID_SUCCESS]: editById,
 });

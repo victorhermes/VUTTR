@@ -43,16 +43,19 @@ class ModalEdit extends Component {
     }).isRequired,
   };
 
+  componentDidMount() {
+    this.getById();
+  }
+
   closeTool = () => {
     const { closeEditToolModal } = this.props;
     closeEditToolModal();
   }
 
-  /* getById = async () => {
-    const { id } = this.props;
-    const response = await api.get(`/tools/${id}`);
-    this.setState({ title: response.data.title });
-  } */
+  getById = async () => {
+    const { id, editToolByIdRequest } = this.props;
+    editToolByIdRequest(id);
+  }
 
   render() {
     const {
@@ -111,6 +114,7 @@ class ModalEdit extends Component {
 
 const mapStateToProps = state => ({
   tools: state.tools,
+  tool: state.tools.tool,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(ToolsActions, dispatch);
@@ -122,10 +126,10 @@ export default compose(
   ),
   withFormik({
     mapPropsToValues: props => ({
-      title: props.tools.unico.title,
-      link: props.tools.unico.link,
-      description: props.tools.unico.description,
-      tags: props.tools.unico.tags,
+      title: props.tool.title,
+      link: props.tool.link,
+      description: props.tool.description,
+      tags: props.tool.tags,
     }),
 
     validateOnChange: true,
