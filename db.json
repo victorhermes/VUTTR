@@ -23,11 +23,12 @@
       "id": 2
     },
     {
-      "title": "react & react native",
-      "link": "https://native.com",
-      "description": "sadasjdasjdjasdjasjdjasjdjasdjasjdjasdjasjdjasdjs",
+      "title": "yup",
+      "link": "https://yup.com",
+      "description": "yup is a tool with superpowers",
       "tags": [
-        "react"
+        "cool tool",
+        "liked"
       ],
       "id": 4
     }

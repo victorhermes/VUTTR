@@ -52,7 +52,10 @@ export const deleteSuccess = (state, { id }) => state.merge({
 export const editSuccess = (state, { id, data }) => state.merge({
   data: state.data.map(tool => (tool.id === parseInt(id, 0)
     ? {
-      ...tool, title: data.title, description: data.description, tags: data.tags,
+      ...tool,
+      title: data.title,
+      description: data.description,
+      tags: data.tags,
     }
     : tool)),
 });
