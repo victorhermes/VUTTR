@@ -2,6 +2,7 @@ import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CreatableSelect from 'react-select/lib/Creatable';
 import { bindActionCreators, compose } from 'redux';
 import * as Yup from 'yup';
 
@@ -12,6 +13,28 @@ import ModalButton from '~/styles/Button';
 import Erro from '~/styles/Error';
 
 import { Container, Content } from './styles';
+
+
+const components = {
+  DropdownIndicator: null,
+};
+
+const dot = color => ({
+  ':hover': {
+    borderColor: color,
+  },
+});
+
+const customStyles = {
+  control: styles => ({
+    ...styles,
+    ...(dot('transparent')),
+    backgroundColor: '#f5f4f6',
+    border: '1px solid #ebeaed',
+    cursor: 'edit',
+    marginTop: '10px',
+  }),
+};
 
 class ModalAdd extends Component {
   static propTypes = {
@@ -43,6 +66,11 @@ class ModalAdd extends Component {
     }).isRequired,
   };
 
+  state = {
+    inputValue: '',
+    value: [],
+  }
+
   closeTool = () => {
     const { closeAddToolModal } = this.props;
     closeAddToolModal();
@@ -52,6 +80,7 @@ class ModalAdd extends Component {
     const {
       handleChange, values, handleSubmit, errors,
     } = this.props;
+    const { inputValue, value } = this.state;
 
     return (
       <Container>
@@ -83,11 +112,22 @@ class ModalAdd extends Component {
 
             <span>Tags</span>
 
+            <CreatableSelect
+              styles={customStyles}
+              components={components}
+              inputValue={inputValue}
+              isClearable
+              isMulti
+              menuIsOpen={false}
+              placeholder="Type something and press enter..."
+              value={value}
+            />
+
             <input name="tags" onChange={handleChange} value={values.tags} />
 
             {!!errors.tags && <Erro>{errors.tags}</Erro>}
 
-            <div>
+            <div className="button">
               <ModalButton size="big" type="submit">
                 Salvar
               </ModalButton>

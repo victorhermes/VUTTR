@@ -61,7 +61,7 @@ export const Content = styled.div`
       }
     }
 
-    div {
+    .button {
       display: flex;
       flex-direction: row-reverse;
 
