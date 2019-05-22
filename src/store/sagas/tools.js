@@ -1,3 +1,4 @@
+import { actions as toastrActions } from 'react-redux-toastr';
 import { call, put } from 'redux-saga/effects';
 
 import api from '../../services/api';
@@ -46,8 +47,22 @@ export function* createTools({
 
     yield put(ToolsActions.createToolSuccess(response.data));
     yield put(ToolsActions.closeAddToolModal());
+
+    yield put(
+      toastrActions.add({
+        type: 'success',
+        title: 'Tool adicionada',
+        message: 'Sua tool foi adicionada com sucesso.',
+      }),
+    );
   } catch (err) {
-    console.tron.log(err);
+    yield put(
+      toastrActions.add({
+        type: 'error',
+        title: 'Tool não adicionada',
+        message: 'Houve um problema ao inserir a tool.',
+      }),
+    );
   }
 }
 
@@ -56,8 +71,22 @@ export function* deleteRequest({ id }) {
     yield call(api.delete, `tools/${id}`);
 
     yield put(ToolsActions.deleteToolSuccess(id));
+
+    yield put(
+      toastrActions.add({
+        type: 'success',
+        title: 'Tool removida',
+        message: 'Sua tool foi removida com sucesso.',
+      }),
+    );
   } catch (err) {
-    console.log(err);
+    yield put(
+      toastrActions.add({
+        type: 'error',
+        title: 'Tool não foi removida',
+        message: 'Houve um problema ao remover a tool.',
+      }),
+    );
   }
 }
 
@@ -74,8 +103,22 @@ export function* editRequest({
 
     yield put(ToolsActions.editToolSuccess(id, response.data));
     yield put(ToolsActions.closeEditToolModal());
+
+    yield put(
+      toastrActions.add({
+        type: 'success',
+        title: 'Tool editada',
+        message: 'Sua tool foi editada com sucesso.',
+      }),
+    );
   } catch (err) {
-    console.log(err);
+    yield put(
+      toastrActions.add({
+        type: 'error',
+        title: 'Tool não foi editada',
+        message: 'Houve um problema ao editar a tool.',
+      }),
+    );
   }
 }
 

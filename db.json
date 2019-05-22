@@ -13,25 +13,36 @@
       "id": 1
     },
     {
-      "title": "formik²",
-      "link": "https://codeburst.io/redux-a-crud-example-abb834d763c9",
-      "description": "formik é bem legal na verdade",
+      "title": "yup not legal",
+      "link": "https://github.com/jquense/yup",
+      "description": "Yup is a JavaScript object schema validator and object parser. The API and style is stolen heavily inspired by Joi, which is an amazing library but is generally too large and difficult to package for use in a browser. Yup is leaner: in the same spirit, without some of the fancy features. You can use it on the server as well, but in that case you might as well just use Joi.",
       "tags": [
-        "formik",
-        "react",
-        "native"
+        "forms",
+        "validation forms"
       ],
-      "id": 2
+      "id": 4
+    },
+    {
+      "title": "unform",
+      "link": "https://github.com/Rocketseat/unform",
+      "description": "ReactJS form library to create uncontrolled form structures with nested fields, validations and much more! ",
+      "tags": [
+        "forms",
+        "formik",
+        "form"
+      ],
+      "id": 5
     },
     {
       "title": "yup",
-      "link": "https://yup.com",
-      "description": "yup is a tool with superpowers",
+      "link": "https://github.com/jquense/yup",
+      "description": "Dead simple Object schema validation ",
       "tags": [
-        "cool tool",
-        "liked"
+        "mask",
+        "validation",
+        "form"
       ],
-      "id": 4
+      "id": 6
     }
   ]
 }

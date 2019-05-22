@@ -2,7 +2,7 @@ import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CreatableSelect from 'react-select/lib/Creatable';
+/* import CreatableSelect from 'react-select/lib/Creatable'; */
 import { bindActionCreators, compose } from 'redux';
 import * as Yup from 'yup';
 
