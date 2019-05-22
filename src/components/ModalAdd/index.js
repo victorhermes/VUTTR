@@ -15,7 +15,7 @@ import Erro from '~/styles/Error';
 import { Container, Content } from './styles';
 
 
-const components = {
+/* const components = {
   DropdownIndicator: null,
 };
 
@@ -35,6 +35,11 @@ const customStyles = {
     marginTop: '10px',
   }),
 };
+
+const createOption = label => ({
+  label,
+  value: label,
+}); */
 
 class ModalAdd extends Component {
   static propTypes = {
@@ -66,10 +71,30 @@ class ModalAdd extends Component {
     }).isRequired,
   };
 
-  state = {
+  /* state = {
     inputValue: '',
-    value: [],
+    tags: [],
   }
+
+  handleInputChange = (inputValue) => {
+    this.setState({ inputValue });
+  };
+
+  handleKeyDown = (event) => {
+    const { inputValue, tags } = this.state;
+    if (!inputValue) return;
+    switch (event.key) {
+      case 'Enter':
+      case 'Tab':
+        this.setState({
+          inputValue: '',
+          tags: [...tags, createOption(inputValue)],
+        });
+        event.preventDefault();
+        break;
+      default:
+    }
+  }; */
 
   closeTool = () => {
     const { closeAddToolModal } = this.props;
@@ -80,7 +105,7 @@ class ModalAdd extends Component {
     const {
       handleChange, values, handleSubmit, errors,
     } = this.props;
-    const { inputValue, value } = this.state;
+    /* const { inputValue, tags } = this.state; */
 
     return (
       <Container>
@@ -112,16 +137,17 @@ class ModalAdd extends Component {
 
             <span>Tags</span>
 
-            <CreatableSelect
+            {/* <CreatableSelect
               styles={customStyles}
               components={components}
               inputValue={inputValue}
               isClearable
               isMulti
               menuIsOpen={false}
-              placeholder="Type something and press enter..."
-              value={value}
-            />
+              onInputChange={this.handleInputChange}
+              onKeyDown={this.handleKeyDown}
+              value={tags}
+            /> */}
 
             <input name="tags" onChange={handleChange} value={values.tags} />
 
