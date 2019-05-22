@@ -49,14 +49,14 @@ class ModalEdit extends Component {
     this.getById();
   }
 
-  closeTool = () => {
-    const { closeEditToolModal } = this.props;
-    closeEditToolModal();
-  }
-
   getById = async () => {
     const { id, editToolByIdRequest } = this.props;
     editToolByIdRequest(id);
+  }
+
+  closeTool = () => {
+    const { closeEditToolModal } = this.props;
+    closeEditToolModal();
   }
 
   render() {
@@ -127,6 +127,7 @@ export default compose(
     mapDispatchToProps,
   ),
   withFormik({
+    enableReinitialize: true,
     mapPropsToValues: props => ({
       title: props.tool.title,
       link: props.tool.link,

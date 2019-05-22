@@ -1,48 +1,28 @@
 {
   "tools": [
     {
-      "title": "nodemon",
+      "title": "Nodemon é legal",
       "link": "https://nodemon.com.br",
-      "description": "Yeah, I'm gonna take my horse to the old town road\nI'm gonna ride 'til I can't no more\nI'm gonna take my horse to the old town road",
+      "description": "Helpers like componentFromProp() and withContext() encapsulate common React patterns into a simple functional interface:",
       "tags": [
-        "tool",
-        "cli",
+        "node",
         "react",
-        "a"
+        "wep",
+        "pack"
       ],
       "id": 1
     },
     {
-      "title": "yup not legal",
-      "link": "https://github.com/jquense/yup",
-      "description": "Yup is a JavaScript object schema validator and object parser. The API and style is stolen heavily inspired by Joi, which is an amazing library but is generally too large and difficult to package for use in a browser. Yup is leaner: in the same spirit, without some of the fancy features. You can use it on the server as well, but in that case you might as well just use Joi.",
+      "title": "yarn segundo",
+      "link": "https://yarn.com.br",
+      "description": "No need to write a new class just to implement shouldComponentUpdate(). Recompose helpers like pure() and onlyUpdateForKeys() do this for you:",
       "tags": [
-        "forms",
-        "validation forms"
+        "yarn",
+        "npm",
+        "maneger",
+        "arroz"
       ],
-      "id": 4
-    },
-    {
-      "title": "unform",
-      "link": "https://github.com/Rocketseat/unform",
-      "description": "ReactJS form library to create uncontrolled form structures with nested fields, validations and much more! ",
-      "tags": [
-        "forms",
-        "formik",
-        "form"
-      ],
-      "id": 5
-    },
-    {
-      "title": "yup",
-      "link": "https://github.com/jquense/yup",
-      "description": "Dead simple Object schema validation ",
-      "tags": [
-        "mask",
-        "validation",
-        "form"
-      ],
-      "id": 6
+      "id": 2
     }
   ]
 }
