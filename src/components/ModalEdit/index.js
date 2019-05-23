@@ -2,6 +2,7 @@ import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { lifecycle } from 'recompose';
 import { bindActionCreators, compose } from 'redux';
 import * as Yup from 'yup';
 
@@ -15,7 +16,7 @@ import { Container, Content } from './styles';
 
 class ModalEdit extends Component {
   static propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     editToolByIdRequest: PropTypes.func.isRequired,
     closeEditToolModal: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -44,15 +45,6 @@ class ModalEdit extends Component {
       tag: PropTypes.string,
     }).isRequired,
   };
-
-  componentDidMount() {
-    this.getById();
-  }
-
-  getById = async () => {
-    const { id, editToolByIdRequest } = this.props;
-    editToolByIdRequest(id);
-  }
 
   closeTool = () => {
     const { closeEditToolModal } = this.props;
@@ -126,13 +118,20 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
+  lifecycle({
+    componentDidMount() {
+      const { id, editToolByIdRequest } = this.props;
+      editToolByIdRequest(id);
+    },
+  }),
   withFormik({
     enableReinitialize: true,
+
     mapPropsToValues: props => ({
-      title: props.tool.title,
-      link: props.tool.link,
-      description: props.tool.description,
-      tags: props.tool.tags,
+      title: props.tool.title || '',
+      link: props.tool.link || '',
+      description: props.tool.description || '',
+      tags: props.tool.tags || '',
     }),
 
     validateOnChange: true,
@@ -162,7 +161,7 @@ export default compose(
       } = values;
       const { editToolRequest } = props;
       const { id } = props;
-      const tgs = tags.split(',').map(item => item.trim());
+      const tgs = tags.map(item => item.trim());
       editToolRequest(id, title, link, description, tgs);
 
       resetForm();

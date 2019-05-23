@@ -2,7 +2,7 @@ import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-/* import CreatableSelect from 'react-select/lib/Creatable'; */
+import CreatableSelect from 'react-select/lib/Creatable';
 import { bindActionCreators, compose } from 'redux';
 import * as Yup from 'yup';
 
@@ -15,7 +15,7 @@ import Erro from '~/styles/Error';
 import { Container, Content } from './styles';
 
 
-/* const components = {
+const components = {
   DropdownIndicator: null,
 };
 
@@ -36,7 +36,7 @@ const customStyles = {
   }),
 };
 
-const createOption = label => ({
+/* const createOption = label => ({
   label,
   value: label,
 }); */
@@ -137,17 +137,16 @@ class ModalAdd extends Component {
 
             <span>Tags</span>
 
-            {/* <CreatableSelect
+            <CreatableSelect
+              name="tags"
               styles={customStyles}
               components={components}
-              inputValue={inputValue}
               isClearable
               isMulti
               menuIsOpen={false}
-              onInputChange={this.handleInputChange}
-              onKeyDown={this.handleKeyDown}
-              value={tags}
-            /> */}
+              onChange={handleChange}
+              value={values.tags}
+            />
 
             <input name="tags" onChange={handleChange} value={values.tags} />
 
@@ -214,7 +213,7 @@ export default compose(
         title, link, description, tags,
       } = values;
       const { createToolRequest } = props;
-      const tgs = tags.split(',').map(item => item.trim());
+      const tgs = tags.split(', ').map(item => item.trim());
       createToolRequest(title, link, description, tgs);
 
       resetForm();

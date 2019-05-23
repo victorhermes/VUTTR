@@ -4,96 +4,29 @@
       "title": "yarn ",
       "link": "https://yarn.com.br",
       "description": "askdkasdkaskdaskdakskdas",
-      "tags": [
-        "npm",
-        "cool",
-        "nice"
-      ],
+      "tags": ["npm", "cool", "nice"],
       "id": 2
     },
     {
       "title": "reducer",
       "link": "https://reducer.com",
       "description": "Of course the open source has much more animation libraries and components. I would like to explore it. But this article will not contain the libraries. You will also receive a bonus at the end of the article in the form of libraries which deserve your attention.",
-      "tags": [
-        "yarn",
-        "add",
-        "okay"
-      ],
+      "tags": ["yarn", "add", "okay"],
       "id": 3
     },
     {
-      "title": "Nodemon é legalasdsa",
+      "title": "nodemon",
       "link": "https://nodemon.com.br",
-      "description": "Helpers like componentFromProp() and withContext() encapsulate common React patterns into a simple functional interface:",
-      "tags": [
-        "node",
-        "react",
-        "wep",
-        "pack",
-        "q"
-      ],
-      "id": 1
+      "description": "askdkasdkaskdaskdakskdas",
+      "tags": ["npm", "cool", "nice"],
+      "id": 4
     },
     {
-      "title": "Nodemon é legal",
-      "link": "https://nodemon.com.br",
-      "description": "Helpers like componentFromProp() and withContext() encapsulate common React patterns into a simple functional interface:",
-      "tags": [
-        "node",
-        "react",
-        "wep",
-        "pack"
-      ],
-      "id": 1
-    },
-    {
-      "title": "Nodemon é legal",
-      "link": "https://nodemon.com.br",
-      "description": "Helpers like componentFromProp() and withContext() encapsulate common React patterns into a simple functional interface:",
-      "tags": [
-        "node",
-        "react",
-        "wep",
-        "pack"
-      ],
-      "id": 1
-    },
-    {
-      "title": "Nodemon é legal",
-      "link": "https://nodemon.com.br",
-      "description": "Helpers like componentFromProp() and withContext() encapsulate common React patterns into a simple functional interface:",
-      "tags": [
-        "node",
-        "react",
-        "wep",
-        "pack"
-      ],
-      "id": 1
-    },
-    {
-      "title": "Nodemon é legal",
-      "link": "https://nodemon.com.br",
-      "description": "Helpers like componentFromProp() and withContext() encapsulate common React patterns into a simple functional interface:",
-      "tags": [
-        "node",
-        "react",
-        "wep",
-        "pack"
-      ],
-      "id": 1
-    },
-    {
-      "title": "Nodemon é legal",
-      "link": "https://nodemon.com.br",
-      "description": "Helpers like componentFromProp() and withContext() encapsulate common React patterns into a simple functional interface:",
-      "tags": [
-        "node",
-        "react",
-        "wep",
-        "pack"
-      ],
-      "id": 1
+      "title": "unform",
+      "link": "https://github.com/Rocketseat/unform",
+      "description": "ReactJS form library to create uncontrolled form structures with nested fields, validations and much more! ",
+      "tags": ["form", "formik", "yup", "validation"],
+      "id": 5
     }
   ]
 }

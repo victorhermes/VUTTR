@@ -104,7 +104,7 @@ class ListTools extends Component {
                 </a>
                 <div>
                   <button type="button" value={tool.id} onClick={this.editTool}>
-                    EDITAR
+                    Editar
                   </button>
                   <button type="button" value={tool.id} onClick={this.deleteTool}>
                     X
