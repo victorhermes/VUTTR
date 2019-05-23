@@ -138,7 +138,7 @@ export default compose(
     validationSchema: Yup.object().shape({
       title: Yup.string()
         .required('Campo obrigatório')
-        .min(1, 'Título muito curto')
+        .min(1, 'Digite ao menos um caractere')
         .max(20, 'Título muito comprido'),
       link: Yup.string()
         .required('Campo obrigatório')
