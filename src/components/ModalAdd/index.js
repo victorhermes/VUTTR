@@ -2,7 +2,7 @@ import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CreatableSelect from 'react-select/lib/Creatable';
+/* import CreatableSelect from 'react-select/lib/Creatable'; */
 import { bindActionCreators, compose } from 'redux';
 import * as Yup from 'yup';
 
@@ -15,7 +15,7 @@ import Erro from '~/styles/Error';
 import { Container, Content } from './styles';
 
 
-const components = {
+/* const components = {
   DropdownIndicator: null,
 };
 
@@ -34,7 +34,7 @@ const customStyles = {
     cursor: 'edit',
     marginTop: '10px',
   }),
-};
+}; */
 
 /* const createOption = label => ({
   label,
@@ -137,7 +137,7 @@ class ModalAdd extends Component {
 
             <span>Tags</span>
 
-            <CreatableSelect
+            {/* <CreatableSelect
               name="tags"
               styles={customStyles}
               components={components}
@@ -146,7 +146,7 @@ class ModalAdd extends Component {
               menuIsOpen={false}
               onChange={handleChange}
               value={values.tags}
-            />
+            /> */}
 
             <input name="tags" onChange={handleChange} value={values.tags} />
 

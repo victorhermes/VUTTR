@@ -16,8 +16,6 @@ import { Container, Content } from './styles';
 
 class ModalEdit extends Component {
   static propTypes = {
-    id: PropTypes.string.isRequired,
-    editToolByIdRequest: PropTypes.func.isRequired,
     closeEditToolModal: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
@@ -161,7 +159,7 @@ export default compose(
       } = values;
       const { editToolRequest } = props;
       const { id } = props;
-      const tgs = tags.map(item => item.trim());
+      const tgs = tags.split(', ').map(item => item);
       editToolRequest(id, title, link, description, tgs);
 
       resetForm();
