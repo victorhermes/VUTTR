@@ -1,4 +1,7 @@
-import styled from 'styled-components';
+import { fadeInDown } from 'react-animations';
+import styled, { keyframes } from 'styled-components';
+
+const bounceAnimation = keyframes`${fadeInDown}`;
 
 export const Container = styled.div`
   overflow-x: auto;
@@ -14,6 +17,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  animation: 0.5s ${bounceAnimation};
   background: #ffffff;
   border-radius: 6px;
   padding: 40px;

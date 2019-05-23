@@ -188,8 +188,8 @@ export default compose(
       tags: [''],
     }),
 
-    validateOnChange: true,
-    validateOnBlur: false,
+    validateOnChange: false,
+    validateOnBlur: true,
 
     validationSchema: Yup.object().shape({
       title: Yup.string()

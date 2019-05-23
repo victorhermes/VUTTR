@@ -30,7 +30,7 @@ export default Creators;
 export const INITIAL_STATE = Immutable({
   tool: {},
   data: [],
-  openAddToolModal: false,
+  openAddToolModal: true,
   openEditToolModal: false,
 });
 
