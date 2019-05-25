@@ -20,6 +20,37 @@
         "css,effects,efeitos,styled-components"
       ],
       "id": 6
+    },
+    {
+      "title": "nodemon ",
+      "link": "https://node.com.pt",
+      "description": "Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development. Install it using npm.",
+      "tags": [
+        "node, react, server-side"
+      ],
+      "id": 7
+    },
+    {
+      "title": "json-server",
+      "link": "https://json.com.br",
+      "description": "No exemplo a seguir, split() procura por 0 ou mais espaços seguidos por um ponto e vírgula seguido por 0 ou mais espaços e, quando encontrar, remove os espaços e os pontos e vírgulas da string.  nameList é o array retornado como resultado do split().",
+      "tags": [
+        "love",
+        "live",
+        "laugh"
+      ],
+      "id": 8
+    },
+    {
+      "title": "json-server",
+      "link": "https://json.com.br",
+      "description": "No exemplo a seguir, split() procura por 0 ou mais espaços seguidos por um ponto e vírgula seguido por 0 ou mais espaços e, quando encontrar, remove os espaços e os pontos e vírgulas da string.  nameList é o array retornado como resultado do split().",
+      "tags": [
+        "love",
+        "live",
+        "laugh"
+      ],
+      "id": 9
     }
   ]
 }

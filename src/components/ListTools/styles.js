@@ -98,3 +98,13 @@ export const Search = styled.div`
     }
   }
 `;
+
+export const Btn = styled.button`
+  font-size: 18px;
+  color: #31225fa1;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  padding: 3px 5px 3px 5px;
+  text-transform: uppercase;
+`;

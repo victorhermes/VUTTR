@@ -182,7 +182,7 @@ export default compose(
   withFormik({
     mapPropsToValues: () => ({
       title: '',
-      link: 'https://',
+      link: '',
       description: '',
       tags: [''],
     }),
@@ -214,6 +214,7 @@ export default compose(
       } = values;
       const { createToolRequest } = props;
       const tgs = tags.split(', ').map(item => item.trim());
+
       createToolRequest(title, link, description, tgs);
 
       resetForm();

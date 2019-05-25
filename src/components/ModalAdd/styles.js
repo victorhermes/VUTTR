@@ -1,4 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { fadeIn, fadeOut } from 'react-animations';
+
+import store from '~/store';
+
+const fadeGo = keyframes`${fadeIn}`;
+const fadeBack = keyframes`${fadeOut}`;
+
+store.subscribe(() => {
+  const state = store.getState().tools.openAddToolModal;
+  localStorage.setItem('@modal', state);
+});
 
 export const Container = styled.div`
   overflow-x: auto;
@@ -14,7 +25,8 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  background: #ffffff;
+  animation: 1s ${!localStorage.getItem('@modal') === true ? fadeBack : fadeGo};
+  background: #fff;
   border-radius: 6px;
   padding: 40px;
   width: 100%;

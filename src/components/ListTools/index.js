@@ -11,7 +11,7 @@ import ModalAdd from '../ModalAdd';
 import ModalEdit from '../ModalEdit';
 import IconPlusCircle from './img/Icon-Plus-Circle.svg';
 import {
-  Container, ToolSection, ToolHeader, Header, Tags, Search,
+  Container, ToolSection, ToolHeader, Header, Tags, Search, Btn,
 } from './styles';
 
 class ListTools extends Component {
@@ -103,12 +103,13 @@ class ListTools extends Component {
                   <h1> {tool.title}</h1>
                 </a>
                 <div>
-                  <button type="button" value={tool.id} onClick={this.editTool}>
-                    Editar
-                  </button>
-                  <button type="button" value={tool.id} onClick={this.deleteTool}>
-                    X
-                  </button>
+                  <Btn type="button" value={tool.id} onClick={this.editTool}>
+                    ✎
+                  </Btn>
+
+                  <Btn type="button" value={tool.id} onClick={this.deleteTool}>
+                    ✖
+                  </Btn>
                 </div>
               </ToolHeader>
 
