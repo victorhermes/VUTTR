@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const ToolSection = styled.div`
   width: 100%;
   height: auto;
-  background-color: #ffffff;
+  background-color: #fff;
   margin: 10px;
   padding: 15px;
   color: #000;
