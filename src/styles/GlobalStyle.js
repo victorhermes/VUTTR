@@ -11,11 +11,12 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         outline: 0;
         box-sizing: border-box;
+        scrollbar-width: thin;
 
     }
 
     body {
-        overflow: ${props => (props.tools.openEditToolModal || props.tools.openAddToolModal ? '' : '')};
+        overflow: ${props => (props.tools.openEditToolModal || props.tools.openAddToolModal ? 'hidden' : '')};
         background: #31225F;
         color: #FFF;
         font-family: 'Source Sans Pro', sans-serif;

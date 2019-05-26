@@ -5,7 +5,10 @@
       "link": "https://github.com/Rocketseat/unform",
       "description": "ReactJS form library to create uncontrolled form structures with nested fields, validations and much more! ",
       "tags": [
-        "css,effects,efeitos,styled-components,1"
+        "css",
+        "effects",
+        "efeitos",
+        "styled-components"
       ],
       "id": 5
     },

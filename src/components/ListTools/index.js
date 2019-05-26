@@ -9,7 +9,9 @@ import ModalButton from '~/styles/Button';
 
 import ModalAdd from '../ModalAdd';
 import ModalEdit from '../ModalEdit';
-import IconPlusCircle from './img/Icon-Plus-Circle.svg';
+
+import IconPlusCircle from '~/assets/images/Icon-Plus-Circle.svg';
+
 import {
   Container, ToolSection, ToolHeader, Header, Tags, Search, Btn,
 } from './styles';

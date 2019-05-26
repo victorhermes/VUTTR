@@ -160,7 +160,7 @@ export default compose(
       const { editToolRequest } = props;
       const { id } = props;
 
-      const tgs = tags.replace(',').map(item => item.trim());
+      const tgs = tags.split(', ').map(item => item.trim());
       editToolRequest(id, title, link, description, tgs);
 
       resetForm();

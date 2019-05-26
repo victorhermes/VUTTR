@@ -5,6 +5,7 @@ const fadeGo = keyframes`${fadeIn}`;
 
 export const Container = styled.div`
   overflow-x: auto;
+  scrollbar-width: thin;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -59,6 +60,7 @@ export const Content = styled.div`
       margin-top: 8px;
       transition: border 0.15s ease;
       font-size: 16px;
+      resize: vertical;
 
       &:focus {
         border-color: #170c3a;
