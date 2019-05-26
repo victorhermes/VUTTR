@@ -59,6 +59,7 @@ export const Content = styled.div`
       margin-top: 8px;
       transition: border 0.15s ease;
       font-size: 16px;
+      resize: vertical;
 
       &:focus {
         border-color: #170c3a;

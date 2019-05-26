@@ -29,17 +29,6 @@
         "node, react, server-side"
       ],
       "id": 7
-    },
-    {
-      "title": "json-server",
-      "link": "https://json.com.br",
-      "description": "No exemplo a seguir, split() procura por 0 ou mais espaços seguidos por um ponto e vírgula seguido por 0 ou mais espaços e, quando encontrar, remove os espaços e os pontos e vírgulas da string.  nameList é o array retornado como resultado do split().",
-      "tags": [
-        "love",
-        "ride",
-        "asd"
-      ],
-      "id": 8
     }
   ]
 }
