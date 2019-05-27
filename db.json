@@ -22,11 +22,11 @@
       "id": 6
     },
     {
-      "title": "nodemon ",
+      "title": "nodemon é legal",
       "link": "https://node.com.pt",
       "description": "Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development. Install it using npm.",
       "tags": [
-        "node, react, server-side"
+        "node,react,server-side"
       ],
       "id": 7
     }

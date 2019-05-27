@@ -2,7 +2,7 @@ import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-/* import CreatableSelect from 'react-select/lib/Creatable'; */
+import CreatableSelect from 'react-select/lib/Creatable';
 import { bindActionCreators, compose } from 'redux';
 import * as Yup from 'yup';
 
@@ -15,11 +15,11 @@ import Erro from '~/styles/Error';
 import { Container, Content } from './styles';
 
 
-/* const components = {
+const components = {
   DropdownIndicator: null,
 };
 
-const dot = color => ({
+/* const dot = color => ({
   ':hover': {
     borderColor: color,
   },
@@ -36,10 +36,10 @@ const customStyles = {
   }),
 }; */
 
-/* const createOption = label => ({
+const createOption = label => ({
   label,
   value: label,
-}); */
+});
 
 class ModalAdd extends Component {
   static propTypes = {
@@ -71,30 +71,34 @@ class ModalAdd extends Component {
     }).isRequired,
   };
 
-  /* state = {
+  state = {
     inputValue: '',
-    tags: [],
-  }
+    value: [],
+  };
+
+  handleChange = (value) => {
+    this.setState({ value });
+  };
 
   handleInputChange = (inputValue) => {
     this.setState({ inputValue });
   };
 
   handleKeyDown = (event) => {
-    const { inputValue, tags } = this.state;
+    const { inputValue, value } = this.state;
     if (!inputValue) return;
     switch (event.key) {
       case 'Enter':
       case 'Tab':
         this.setState({
           inputValue: '',
-          tags: [...tags, createOption(inputValue)],
+          value: [...value, createOption(inputValue)],
         });
         event.preventDefault();
         break;
       default:
     }
-  }; */
+  };
 
   closeTool = () => {
     const { closeAddToolModal } = this.props;
@@ -105,7 +109,7 @@ class ModalAdd extends Component {
     const {
       handleChange, values, handleSubmit, errors,
     } = this.props;
-    /* const { inputValue, tags } = this.state; */
+    const { inputValue, value } = this.state;
 
     return (
       <Container>
@@ -137,16 +141,18 @@ class ModalAdd extends Component {
 
             <span>Tags</span>
 
-            {/* <CreatableSelect
-              name="tags"
-              styles={customStyles}
+            <CreatableSelect
               components={components}
+              inputValue={inputValue}
               isClearable
               isMulti
               menuIsOpen={false}
-              onChange={handleChange}
-              value={values.tags}
-            /> */}
+              onChange={this.handleChange}
+              onInputChange={this.handleInputChange}
+              onKeyDown={this.handleKeyDown}
+              placeholder="Type something and press enter..."
+              value={value}
+            />
 
             <input name="tags" onChange={handleChange} value={values.tags} />
 
@@ -180,11 +186,13 @@ export default compose(
     mapDispatchToProps,
   ),
   withFormik({
-    mapPropsToValues: () => ({
+    enableReinitialize: true,
+
+    mapPropsToValues: ({ value }) => ({
       title: '',
       link: '',
       description: '',
-      tags: [''],
+      tags: console.log(value),
     }),
 
     validateOnChange: false,
