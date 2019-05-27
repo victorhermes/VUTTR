@@ -71,10 +71,10 @@ class ModalAdd extends Component {
     }).isRequired,
   };
 
-  state = {
-    inputValue: '',
-    value: [],
-  };
+    state = {
+      inputValue: '',
+      value: [],
+    };
 
   handleChange = (value) => {
     this.setState({ value });
