@@ -1,34 +1,44 @@
 {
   "tools": [
     {
-      "title": "unform 2",
-      "link": "https://github.com/Rocketseat/unform",
-      "description": "ReactJS form library to create uncontrolled form structures with nested fields, validations and much more! ",
+      "title": "asdasdasdasd",
+      "link": "https://sdkasd.com",
+      "description": "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
       "tags": [
-        "css",
-        "effects",
-        "efeitos",
-        "styled-components"
+        {
+          "label": "amor",
+          "value": "amor"
+        },
+        {
+          "label": "odio",
+          "value": "odio"
+        },
+        {
+          "label": "paixao",
+          "value": "paixao"
+        }
       ],
-      "id": 5
+      "id": 8
     },
     {
-      "title": "cssfx 2",
-      "link": "https://github.com/jolaleye/cssfx",
-      "description": "✨ Beautifully simple click-to-copy CSS effects https://cssfx.dev",
+      "title": "nodemon",
+      "link": "https://nodemon.com.br",
+      "description": "Wrapping CMS' approach up into a function is a good idea, it just needs a feature tests: One for JSON.stringify, one for JSON.parse, and one to test if localStorage can in fact set and retrieve an object.",
       "tags": [
-        "css,effects,efeitos,styled-components"
+        {
+          "label": "tool",
+          "value": "tool"
+        },
+        {
+          "label": "ferramenta",
+          "value": "ferramenta"
+        },
+        {
+          "label": "legal",
+          "value": "legal"
+        }
       ],
-      "id": 6
-    },
-    {
-      "title": "nodemon é legal",
-      "link": "https://node.com.pt",
-      "description": "Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development. Install it using npm.",
-      "tags": [
-        "node,react,server-side"
-      ],
-      "id": 7
+      "id": 9
     }
   ]
 }

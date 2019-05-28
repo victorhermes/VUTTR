@@ -94,6 +94,7 @@ class ModalAdd extends Component {
           inputValue: '',
           value: [...value, createOption(inputValue)],
         });
+        localStorage.setItem('@tags', JSON.stringify([...value, createOption(inputValue)]));
         event.preventDefault();
         break;
       default:
@@ -154,9 +155,9 @@ class ModalAdd extends Component {
               value={value}
             />
 
-            <input name="tags" onChange={handleChange} value={values.tags} />
+            {/* <input name="tags" onChange={handleChange} value={values.tags} />
 
-            {!!errors.tags && <Erro>{errors.tags}</Erro>}
+            {!!errors.tags && <Erro>{errors.tags}</Erro>} */}
 
             <div className="button">
               <ModalButton size="big" type="submit">
@@ -188,11 +189,11 @@ export default compose(
   withFormik({
     enableReinitialize: true,
 
-    mapPropsToValues: ({ value }) => ({
-      title: '',
-      link: '',
-      description: '',
-      tags: console.log(value),
+    mapPropsToValues: () => ({
+      title: 'asdasdasdasd',
+      link: 'https://sdkasd.com',
+      description: 'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+      /* tags: ['dasdasdas'], */
     }),
 
     validateOnChange: false,
@@ -210,20 +211,22 @@ export default compose(
         .required('Campo obrigatório')
         .min(20, 'Descrição muito curto')
         .max(600, 'Descrição muito comprida'),
-      tags: Yup.string()
+      /* tags: Yup.string()
         .required('Campo obrigatório')
         .min(2, 'Tag muito curta')
-        .max(100, 'Tag muito comprida'),
+        .max(100, 'Tag muito comprida'), */
     }),
 
     handleSubmit: (values, { props, resetForm }) => {
       const {
-        title, link, description, tags,
+        title, link, description,
       } = values;
+      const tags = localStorage.getItem('@tags');
+      const dataTag = JSON.parse(tags);
       const { createToolRequest } = props;
-      const tgs = tags.split(', ').map(item => item.trim());
+      // const tgs = tags.split(', ').map(item => item.trim());
 
-      createToolRequest(title, link, description, tgs);
+      createToolRequest(title, link, description, dataTag);
 
       resetForm();
     },

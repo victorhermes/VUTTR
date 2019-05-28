@@ -119,7 +119,7 @@ class ListTools extends Component {
 
               <Tags>
                 {tool.tags.map(tag => (
-                  <span key={Math.random() + tag}>#{tag}</span>
+                  <span key={Math.random() + tag}>#{tag.value}</span>
                 ))}
               </Tags>
             </ToolSection>
