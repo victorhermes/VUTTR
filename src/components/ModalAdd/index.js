@@ -188,11 +188,11 @@ export default compose(
   withFormik({
     enableReinitialize: true,
 
-    mapPropsToValues: ({ value }) => ({
+    mapPropsToValues: () => ({
       title: '',
       link: '',
       description: '',
-      tags: console.log(value),
+      tags: [''],
     }),
 
     validateOnChange: false,
