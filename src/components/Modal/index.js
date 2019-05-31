@@ -1,4 +1,5 @@
 import { withFormik } from 'formik';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
@@ -15,6 +16,34 @@ import Erro from '~/styles/Error';
 import 'rodal/lib/rodal.css';
 
 class Modal extends Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    values: PropTypes.shape({
+      title: PropTypes.string,
+      link: PropTypes.string,
+      description: PropTypes.string,
+      tag: PropTypes.string,
+    }).isRequired,
+    tools: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+          link: PropTypes.string,
+          description: PropTypes.string,
+          tags: PropTypes.array.isRequired,
+        }),
+      ),
+    }).isRequired,
+    errors: PropTypes.shape({
+      title: PropTypes.string,
+      link: PropTypes.string,
+      description: PropTypes.string,
+      tag: PropTypes.string,
+    }).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = { visible: false };
@@ -40,7 +69,7 @@ class Modal extends Component {
           show
         </button>
 
-        <Rodal animation="fade" visible={visible} onClose={this.hide}>
+        <Rodal closeMaskOnClick={false} animation="fade" visible={visible} onClose={this.hide}>
           <h1>Add tool</h1>
           <form onSubmit={handleSubmit}>
             <span>Tool Name</span>
