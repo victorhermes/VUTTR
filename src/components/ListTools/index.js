@@ -7,7 +7,6 @@ import ToolsActions from '~/store/ducks/tools';
 
 import ModalButton from '~/styles/Button';
 
-import Modal from '../Modal';
 import ModalAdd from '../ModalAdd';
 import ModalEdit from '../ModalEdit';
 
@@ -120,7 +119,7 @@ class ListTools extends Component {
 
               <Tags>
                 {tool.tags.map(tag => (
-                  <span key={Math.random() + tag}>#{tag}</span>
+                  <span key={Math.random() + tag.value}>#{tag.value}</span>
                 ))}
               </Tags>
             </ToolSection>
@@ -128,8 +127,6 @@ class ListTools extends Component {
         ) : (
           <h2 align="center">Ferramenta não existe!</h2>
         )}
-
-        <Modal />
 
         {tools.openAddToolModal && <ModalAdd />}
         {tools.openEditToolModal && <ModalEdit id={id} />}

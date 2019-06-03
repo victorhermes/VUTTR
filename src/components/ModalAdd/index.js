@@ -19,7 +19,7 @@ const components = {
   DropdownIndicator: null,
 };
 
-/* const dot = color => ({
+const dot = color => ({
   ':hover': {
     borderColor: color,
   },
@@ -34,7 +34,7 @@ const customStyles = {
     cursor: 'edit',
     marginTop: '10px',
   }),
-}; */
+};
 
 const createOption = label => ({
   label,
@@ -143,6 +143,7 @@ class ModalAdd extends Component {
             <span>Tags</span>
 
             <CreatableSelect
+              styles={customStyles}
               components={components}
               inputValue={inputValue}
               isClearable
@@ -151,7 +152,7 @@ class ModalAdd extends Component {
               onChange={this.handleChange}
               onInputChange={this.handleInputChange}
               onKeyDown={this.handleKeyDown}
-              placeholder="Type something and press enter..."
+              placeholder="Aperte enter para inserir a tag"
               value={value}
             />
 

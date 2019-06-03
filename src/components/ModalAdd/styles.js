@@ -63,7 +63,7 @@ export const Content = styled.div`
       resize: vertical;
 
       &:focus {
-        border-color: #170c3a;
+        border-color: #3392ff;
       }
     }
 
