@@ -79,6 +79,26 @@
         }
       ],
       "id": 16
+    },
+    {
+      "title": "reactotron",
+      "link": "https://reactotron.com",
+      "description": "Reactotron is developed by Infinite Red, @rmevans9, and 70+ amazing contributors! Special thanks to @skellock for originally creating Reactotron while at Infinite Red.",
+      "tags": [
+        {
+          "label": "moom",
+          "value": "moom"
+        },
+        {
+          "label": "react",
+          "value": "react"
+        },
+        {
+          "label": "reactotron",
+          "value": "reactotron"
+        }
+      ],
+      "id": 17
     }
   ]
 }

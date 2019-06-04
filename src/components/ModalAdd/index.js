@@ -2,7 +2,7 @@ import { Form, Input } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-/* import CreatableSelect from 'react-select/lib/Creatable'; */
+import CreatableSelect from 'react-select/lib/Creatable';
 import { bindActionCreators } from 'redux';
 import * as Yup from 'yup';
 
@@ -14,7 +14,7 @@ import ModalButton from '~/styles/Button';
 
 import { Container, Content } from './styles';
 
-/* const components = {
+const components = {
   DropdownIndicator: null,
 };
 
@@ -38,7 +38,7 @@ const customStyles = {
 const createOption = label => ({
   label,
   value: label,
-}); */
+});
 
 const schema = Yup.object().shape({
   title: Yup.string()
@@ -52,10 +52,6 @@ const schema = Yup.object().shape({
     .required('Campo obrigatório')
     .min(20, 'Descrição muito curta')
     .max(600, 'Descrição muito comprida'),
-  tags: Yup.string()
-    .required('Campo obrigatório')
-    .min(2, 'Tag muito curta')
-    .max(100, 'Tag muito comprida'),
 });
 
 class ModalAdd extends Component {
@@ -75,7 +71,7 @@ class ModalAdd extends Component {
     }).isRequired,
   };
 
-  /* state = {
+  state = {
     inputValue: '',
     value: [],
   };
@@ -103,7 +99,7 @@ class ModalAdd extends Component {
         break;
       default:
     }
-  }; */
+  };
 
   closeTool = () => {
     const { closeAddToolModal } = this.props;
@@ -114,16 +110,15 @@ class ModalAdd extends Component {
     title,
     link,
     description,
-    tags,
   }) => {
     const { createToolRequest } = this.props;
-    const tgs = tags.split(', ').map(item => item.trim());
+    const { value } = this.state;
 
-    createToolRequest(title, link, description, tgs);
+    createToolRequest(title, link, description, value);
   };
 
   render() {
-    /* const { inputValue, value } = this.state; */
+    const { inputValue, value } = this.state;
 
     return (
       <Container>
@@ -140,7 +135,19 @@ class ModalAdd extends Component {
             <Input multiline name="description" />
 
             <span>Tags</span>
-            <Input name="tags" />
+            <CreatableSelect
+              styles={customStyles}
+              components={components}
+              inputValue={inputValue}
+              isClearable
+              isMulti
+              menuIsOpen={false}
+              onChange={this.handleChange}
+              onInputChange={this.handleInputChange}
+              onKeyDown={this.handleKeyDown}
+              placeholder="Aperte enter para inserir a tag"
+              value={value}
+            />
 
             <div className="button">
               <ModalButton size="big" type="submit">
