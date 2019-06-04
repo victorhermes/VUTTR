@@ -52,11 +52,16 @@ const schema = Yup.object().shape({
     .required('Campo obrigatório')
     .min(20, 'Descrição muito curta')
     .max(600, 'Descrição muito comprida'),
+  tags: Yup.string()
+    .required('Campo obrigatório')
+    .min(2, 'Tag muito curta')
+    .max(100, 'Tag muito comprida'),
 });
 
 class ModalAdd extends Component {
   static propTypes = {
     closeAddToolModal: PropTypes.func.isRequired,
+    createToolRequest: PropTypes.func.isRequired,
     tools: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
@@ -105,12 +110,16 @@ class ModalAdd extends Component {
     closeAddToolModal();
   };
 
-  handleSubmit = ({ title, link, description }) => {
-    console.log(title);
-    console.log(link);
-    console.log(description);
-    // const { createToolRequest } = this.props;
-    // createToolRequest();
+  handleSubmit = ({
+    title,
+    link,
+    description,
+    tags,
+  }) => {
+    const { createToolRequest } = this.props;
+    const tgs = tags.split(', ').map(item => item.trim());
+
+    createToolRequest(title, link, description, tgs);
   };
 
   render() {
@@ -129,6 +138,9 @@ class ModalAdd extends Component {
 
             <span>Tool Description</span>
             <Input multiline name="description" />
+
+            <span>Tags</span>
+            <Input name="tags" />
 
             <div className="button">
               <ModalButton size="big" type="submit">
