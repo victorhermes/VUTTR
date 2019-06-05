@@ -77,9 +77,13 @@ class ModalAdd extends Component {
   };
 
   componentDidMount() {
+    this.loadFunc();
+  };
+
+  loadFunc = () => {
     const { id, editToolByIdRequest } = this.props;
     editToolByIdRequest(id);
-  };
+  }
 
   handleChange = (value) => {
     this.setState({ value });
