@@ -8,7 +8,6 @@ import ToolsActions from '~/store/ducks/tools';
 import ModalButton from '~/styles/Button';
 
 import ModalAdd from '../ModalAdd';
-import ModalEdit from '../ModalEdit';
 
 import IconPlusCircle from '~/assets/images/Icon-Plus-Circle.svg';
 
@@ -23,7 +22,6 @@ class ListTools extends Component {
     getByTagToolRequest: PropTypes.func.isRequired,
     deleteToolRequest: PropTypes.func.isRequired,
     openAddToolModal: PropTypes.func.isRequired,
-    openEditToolModal: PropTypes.func.isRequired,
     tools: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
@@ -54,10 +52,10 @@ class ListTools extends Component {
   };
 
   editTool = (e) => {
-    const { openEditToolModal } = this.props;
+    const { openAddToolModal } = this.props;
     const id = e.target.value;
     this.setState({ id });
-    openEditToolModal();
+    openAddToolModal();
   }
 
   filterTools = (e) => {
@@ -128,8 +126,7 @@ class ListTools extends Component {
           <h2 align="center">Ferramenta não existe!</h2>
         )}
 
-        {tools.openAddToolModal && <ModalAdd />}
-        {tools.openEditToolModal && <ModalEdit id={id} />}
+        {tools.openAddToolModal && <ModalAdd id={id} />}
       </Container>
     );
   }

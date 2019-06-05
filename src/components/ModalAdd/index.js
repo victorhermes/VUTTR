@@ -76,6 +76,11 @@ class ModalAdd extends Component {
     value: [],
   };
 
+  componentDidMount() {
+    const { id, editToolByIdRequest } = this.props;
+    editToolByIdRequest(id);
+  };
+
   handleChange = (value) => {
     this.setState({ value });
   };
@@ -119,12 +124,19 @@ class ModalAdd extends Component {
 
   render() {
     const { inputValue, value } = this.state;
+    const { tool } = this.props;
+
+    const initialData = {
+      title: tool.title || '',
+      link: 'https://node.com',
+      description: 'just a text to illustrate the input description.',
+    };
 
     return (
       <Container>
         <Content size="big">
           <h1>Add tool</h1>
-          <Form schema={schema} onSubmit={this.handleSubmit}>
+          <Form schema={schema} onSubmit={this.handleSubmit} initialData={initialData}>
             <span>Tool Name</span>
             <Input name="title" />
 
@@ -167,6 +179,7 @@ class ModalAdd extends Component {
 
 const mapStateToProps = state => ({
   tools: state.tools,
+  tool: state.tools.tool,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(ToolsActions, dispatch);
