@@ -21,30 +21,6 @@
       "id": 14
     },
     {
-      "title": "react",
-      "link": "https://react.com",
-      "description": "Spreading the provided styles into your returned object lets you extend it however you like while maintaining existing styles.",
-      "tags": [
-        {
-          "label": "react",
-          "value": "react"
-        },
-        {
-          "label": "web",
-          "value": "web"
-        },
-        {
-          "label": "apps",
-          "value": "apps"
-        },
-        {
-          "label": "nodemon",
-          "value": "nodemon"
-        }
-      ],
-      "id": 15
-    },
-    {
       "title": "reactotron",
       "link": "https://reactotron.com",
       "description": "Reactotron is developed by Infinite Red, @rmevans9, and 70+ amazing contributors! Special thanks to @skellock for originally creating Reactotron while at Infinite Red.",
