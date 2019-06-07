@@ -124,7 +124,7 @@ class ModalAdd extends Component {
 
   render() {
     const { inputValue, value, data } = this.state;
-    console.log(data);
+
     const initialData = {
       title: data.title || '',
       link: data.link || '',
