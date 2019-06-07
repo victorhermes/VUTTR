@@ -74,15 +74,12 @@ class ModalAdd extends Component {
   state = {
     inputValue: '',
     value: [],
+    data: {},
   };
 
-  componentDidMount() {
-    this.loadFunc();
-  };
-
-  loadFunc = () => {
-    const { id, editToolByIdRequest } = this.props;
-    editToolByIdRequest(id);
+  componentWillReceiveProps(nextProps) {
+    const data = nextProps.tool;
+    this.setState({ data });
   }
 
   handleChange = (value) => {
@@ -103,7 +100,6 @@ class ModalAdd extends Component {
           inputValue: '',
           value: [...value, createOption(inputValue)],
         });
-        localStorage.setItem('@tags', JSON.stringify([...value, createOption(inputValue)]));
         event.preventDefault();
         break;
       default:
@@ -127,13 +123,12 @@ class ModalAdd extends Component {
   };
 
   render() {
-    const { inputValue, value } = this.state;
-    const { tool } = this.props;
-
+    const { inputValue, value, data } = this.state;
+    console.log(data);
     const initialData = {
-      title: tool.title || '',
-      link: 'https://node.com',
-      description: 'just a text to illustrate the input description.',
+      title: data.title || '',
+      link: data.link || '',
+      description: data.description || '',
     };
 
     return (

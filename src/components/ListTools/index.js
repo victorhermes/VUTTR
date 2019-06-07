@@ -52,11 +52,11 @@ class ListTools extends Component {
   };
 
   editTool = (e) => {
-    const { openAddToolModal } = this.props;
+    const { openAddToolModal, editToolByIdRequest } = this.props;
     const id = e.target.value;
-    this.setState({ id });
+    editToolByIdRequest(id);
     openAddToolModal();
-  }
+  };
 
   filterTools = (e) => {
     const { getAllToolRequest } = this.props;
@@ -77,7 +77,7 @@ class ListTools extends Component {
 
   render() {
     const { tools, openAddToolModal } = this.props;
-    const { checkTag, id } = this.state;
+    const { checkTag } = this.state;
 
     return (
       <Container>
@@ -126,7 +126,7 @@ class ListTools extends Component {
           <h2 align="center">Ferramenta não existe!</h2>
         )}
 
-        {tools.openAddToolModal && <ModalAdd id={id} />}
+        {tools.openAddToolModal && <ModalAdd />}
       </Container>
     );
   }
