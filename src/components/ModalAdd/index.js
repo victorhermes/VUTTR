@@ -73,7 +73,7 @@ class ModalAdd extends Component {
 
   state = {
     inputValue: '',
-    value: [],
+    value: [{ label: 'asdasd', value: 'asdasd' }],
     data: {},
   };
 
@@ -148,8 +148,8 @@ class ModalAdd extends Component {
             <span>Tags</span>
             <CreatableSelect
               styles={customStyles}
-              components={components}
               inputValue={inputValue}
+              components={components}
               isClearable
               isMulti
               menuIsOpen={false}
