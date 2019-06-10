@@ -1,124 +1,71 @@
 {
   "tools": [
     {
-      "title": "asus",
-      "link": "https://react-select.com/creatable",
-      "description": "A função seguinte recupera três itens armazenados no local storage e usa-os para definir estilos customizados em uma página.",
+      "title": "eslint-plugin-react",
+      "link": "https://github.com/yannickcr/eslint-plugin-react",
+      "description": "React specific linting rules for ESLint ",
       "tags": [
         {
-          "label": "good",
-          "value": "good"
+          "label": "eslint",
+          "value": "eslint"
         },
         {
-          "label": "time",
-          "value": "time"
+          "label": "plugin",
+          "value": "plugin"
+        },
+        {
+          "label": "react",
+          "value": "react"
         }
       ],
-      "id": 18
+      "id": 1
     },
     {
-      "title": "github",
-      "link": "https://github.com/JedWatson/react-select/issues/3224",
-      "description": "github is something cool",
+      "title": "rodal",
+      "link": "https://github.com/chenjiahan/rodal",
+      "description": "A React modal with animations. https://chenjiahan.github.com/rodal",
       "tags": [
         {
-          "label": "asdasd",
-          "value": "asdasd"
+          "label": "modal",
+          "value": "modal"
         },
         {
-          "label": "cool",
-          "value": "cool"
+          "label": "rodal",
+          "value": "rodal"
+        },
+        {
+          "label": "react",
+          "value": "react"
         }
       ],
-      "id": 19
+      "id": 2
     },
     {
-      "title": "celular bom",
-      "link": "https://react-select.com/home#fixed-options",
-      "description": "Check this link from react docs: React Textarea Value. Basically for textArea ... To handle this case, you can specify a defaultValue attribute instead of value.",
-      "tags": [
-        {
-          "label": "celular",
-          "value": "celular"
-        },
-        {
-          "label": "folga",
-          "value": "folga"
-        }
-      ],
-      "id": 20
+      "title": "formcat",
+      "link": "https://github.com/guilouro/formcat",
+      "description": "A simple and easy way to control forms in React using the React Context API ",
+      "tags": [],
+      "id": 3
     },
     {
-      "title": "apple",
-      "link": "https://apple.com",
-      "description": "Apple is a good ideia to use. I wanna one!",
+      "title": "styled-components",
+      "link": "https://github.com/styled-components/styled-components",
+      "description": "Visual primitives for the component age. Use the best bits of ES6 and CSS to style your apps without stress 💅 https://styled-components.com",
       "tags": [
         {
-          "label": "mac",
-          "value": "mac"
+          "label": "css",
+          "value": "css"
         },
         {
-          "label": "watch",
-          "value": "watch"
+          "label": "style",
+          "value": "style"
+        },
+        {
+          "label": "react-style",
+          "value": "react-style"
         }
       ],
-      "id": 21
-    },
-    {
-      "title": "samsung",
-      "link": "https://react-select.com/creatable",
-      "description": "just a tool to remember",
-      "tags": [
-        {
-          "label": "sung",
-          "value": "sung"
-        },
-        {
-          "label": "is",
-          "value": "is"
-        },
-        {
-          "label": "bad",
-          "value": "bad"
-        }
-      ],
-      "id": 22
-    },
-    {
-      "title": "Multi-select",
-      "link": "https://react-select.com/creatable",
-      "description": "See the source or open the examples on codesandbox using the buttons that appear when you hover over each select below.",
-      "tags": [
-        {
-          "label": "create",
-          "value": "create"
-        },
-        {
-          "label": "react select",
-          "value": "react select"
-        }
-      ],
-      "id": 23
-    },
-    {
-      "title": "json-server",
-      "link": "https://github.com/typicode/json-server",
-      "description": "Use _page and optionally _limit to paginate returned data.",
-      "tags": [
-        {
-          "label": "json",
-          "value": "json"
-        },
-        {
-          "label": "server",
-          "value": "server"
-        },
-        {
-          "label": "tool",
-          "value": "tool"
-        }
-      ],
-      "id": 24
+      "id": 4
     }
   ]
 }
