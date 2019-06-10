@@ -10,8 +10,6 @@ import ToolsActions from '~/store/ducks/tools';
 
 import ModalButton from '~/styles/Button';
 
-/* import Erro from '~/styles/Error'; */
-
 import { Container, Content } from './styles';
 
 const components = {
@@ -65,7 +63,6 @@ const schema = Yup.object().shape({
 
 class ModalAdd extends Component {
   static propTypes = {
-    withId: PropTypes.string.isRequired,
     editToolRequest: PropTypes.func.isRequired,
     closeAddToolModal: PropTypes.func.isRequired,
     createToolRequest: PropTypes.func.isRequired,
@@ -92,9 +89,7 @@ class ModalAdd extends Component {
 
   componentWillReceiveProps(nextProps) {
     const data = nextProps.tools.tool;
-    this.setState({ data });
-    this.setState({ value: data.tags });
-    this.setState({ description: data.description });
+    this.setState({ data, value: data.tags, description: data.description });
   }
 
   handleTextarea = (e) => {
@@ -126,6 +121,7 @@ class ModalAdd extends Component {
   };
 
   closeTool = () => {
+    localStorage.clear();
     const { closeAddToolModal } = this.props;
     closeAddToolModal();
   };
@@ -134,11 +130,12 @@ class ModalAdd extends Component {
     title,
     link,
   }) => {
-    const { withId, createToolRequest, editToolRequest } = this.props;
+    const id = localStorage.getItem('@id');
+    const { createToolRequest, editToolRequest } = this.props;
     const { value, description } = this.state;
 
-    if (withId) {
-      editToolRequest(withId, title, link, description, value);
+    if (id) {
+      editToolRequest(id, title, link, description, value);
     } else {
       createToolRequest(title, link, description, value);
     }
@@ -155,25 +152,24 @@ class ModalAdd extends Component {
     const initialData = {
       title: data.title || '',
       link: data.link || '',
-      // description: data.description || '',
       tags: data.tags || '',
     };
 
     return (
       <Container>
         <Content size="big">
-          <h1>Add tool</h1>
+          <h1>{ localStorage.getItem('@id') ? 'Edit tool' : 'Add tool' } </h1>
           <Form schema={schema} onSubmit={this.handleSubmit} initialData={initialData}>
-            <span>Tool Name</span>
+            <span className="tagName">Tool Name</span>
             <Input name="title" />
 
-            <span>Tool Link</span>
+            <span className="tagName">Tool Link</span>
             <Input name="link" />
 
-            <span>Tool Description</span>
+            <span className="tagName">Tool Description</span>
             <Input multiline name="description" value={description} onChange={this.handleTextarea} />
 
-            <span>Tags</span>
+            <span className="tagName">Tags</span>
             <CreatableSelect
               styles={customStyles}
               inputValue={inputValue}
