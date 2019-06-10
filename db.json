@@ -91,6 +91,42 @@
         }
       ],
       "id": 22
+    },
+    {
+      "title": "Multi-select",
+      "link": "https://react-select.com/creatable",
+      "description": "See the source or open the examples on codesandbox using the buttons that appear when you hover over each select below.",
+      "tags": [
+        {
+          "label": "create",
+          "value": "create"
+        },
+        {
+          "label": "react select",
+          "value": "react select"
+        }
+      ],
+      "id": 23
+    },
+    {
+      "title": "json-server",
+      "link": "https://github.com/typicode/json-server",
+      "description": "Use _page and optionally _limit to paginate returned data.",
+      "tags": [
+        {
+          "label": "json",
+          "value": "json"
+        },
+        {
+          "label": "server",
+          "value": "server"
+        },
+        {
+          "label": "tool",
+          "value": "tool"
+        }
+      ],
+      "id": 24
     }
   ]
 }

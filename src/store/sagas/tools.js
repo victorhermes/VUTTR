@@ -30,7 +30,7 @@ export function* getTagTools({ word }) {
   } else {
     response = yield call(api.get, '/tools');
   }
-
+  console.log(response);
   yield put(ToolsActions.getToolSuccess(response.data));
 }
 

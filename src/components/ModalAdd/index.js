@@ -33,6 +33,15 @@ const customStyles = {
     cursor: 'edit',
     marginTop: '10px',
   }),
+  multiValueRemove: (styles, { data }) => ({
+    ...styles,
+    color: data.color,
+    ':hover': {
+      backgroundColor: 'rgb(49, 34, 95)',
+      color: 'white',
+      cursor: 'pointer',
+    },
+  }),
 };
 
 const createOption = label => ({
@@ -56,12 +65,12 @@ const schema = Yup.object().shape({
 
 class ModalAdd extends Component {
   static propTypes = {
-    withId: PropTypes.number.isRequired,
-    tool: PropTypes.func.isRequired,
+    withId: PropTypes.string.isRequired,
     editToolRequest: PropTypes.func.isRequired,
     closeAddToolModal: PropTypes.func.isRequired,
     createToolRequest: PropTypes.func.isRequired,
     tools: PropTypes.shape({
+      tool: PropTypes.object,
       data: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
@@ -82,7 +91,7 @@ class ModalAdd extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    const data = nextProps.tool;
+    const data = nextProps.tools.tool;
     this.setState({ data });
     this.setState({ value: data.tags });
     this.setState({ description: data.description });
@@ -197,7 +206,6 @@ class ModalAdd extends Component {
 
 const mapStateToProps = state => ({
   tools: state.tools,
-  tool: state.tools.tool,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(ToolsActions, dispatch);
