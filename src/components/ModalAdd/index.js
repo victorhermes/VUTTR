@@ -206,58 +206,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(ToolsActions, dispatch);
 
-<<<<<<< HEAD
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
-  withFormik({
-    enableReinitialize: true,
-
-    mapPropsToValues: () => ({
-      title: '',
-      link: '',
-      description: '',
-      tags: [''],
-    }),
-
-    validateOnChange: false,
-    validateOnBlur: true,
-
-    validationSchema: Yup.object().shape({
-      title: Yup.string()
-        .required('Campo obrigatório')
-        .min(1, 'Título muito curto')
-        .max(20, 'Título muito comprido'),
-      link: Yup.string()
-        .required('Campo obrigatório')
-        .url('URL inválida'),
-      description: Yup.string()
-        .required('Campo obrigatório')
-        .min(20, 'Descrição muito curto')
-        .max(600, 'Descrição muito comprida'),
-      tags: Yup.string()
-        .required('Campo obrigatório')
-        .min(2, 'Tag muito curta')
-        .max(100, 'Tag muito comprida'),
-    }),
-
-    handleSubmit: (values, { props, resetForm }) => {
-      const {
-        title, link, description, tags,
-      } = values;
-      const { createToolRequest } = props;
-      const tgs = tags.split(', ').map(item => item.trim());
-
-      createToolRequest(title, link, description, tgs);
-
-      resetForm();
-    },
-  }),
-=======
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
->>>>>>> beta
 )(ModalAdd);

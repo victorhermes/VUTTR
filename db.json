@@ -119,26 +119,6 @@
         }
       ],
       "id": 24
-    },
-    {
-      "title": "asu",
-      "link": "https://moom.com",
-      "description": "Composing a display label from the label property and rating property in the options object",
-      "tags": [
-        {
-          "label": "good",
-          "value": "good"
-        },
-        {
-          "label": "time",
-          "value": "time"
-        },
-        {
-          "label": "6",
-          "value": "6"
-        }
-      ],
-      "id": 25
     }
   ]
 }
