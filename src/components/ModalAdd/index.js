@@ -1,25 +1,22 @@
-import { withFormik } from 'formik';
+import { Form, Input } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CreatableSelect from 'react-select/lib/Creatable';
-import { bindActionCreators, compose } from 'redux';
+import { bindActionCreators } from 'redux';
 import * as Yup from 'yup';
 
 import ToolsActions from '~/store/ducks/tools';
 
 import ModalButton from '~/styles/Button';
 
-import Erro from '~/styles/Error';
-
 import { Container, Content } from './styles';
-
 
 const components = {
   DropdownIndicator: null,
 };
 
-/* const dot = color => ({
+const dot = color => ({
   ':hover': {
     borderColor: color,
   },
@@ -34,25 +31,43 @@ const customStyles = {
     cursor: 'edit',
     marginTop: '10px',
   }),
-}; */
+  multiValueRemove: (styles, { data }) => ({
+    ...styles,
+    color: data.color,
+    ':hover': {
+      backgroundColor: 'rgb(49, 34, 95)',
+      color: 'white',
+      cursor: 'pointer',
+    },
+  }),
+};
 
 const createOption = label => ({
   label,
   value: label,
 });
 
+const schema = Yup.object().shape({
+  title: Yup.string()
+    .required('Campo obrigatório')
+    .min(1, 'Título muito curto')
+    .max(20, 'Título muito comprido'),
+  link: Yup.string()
+    .required('Campo obrigatório')
+    .url('URL inválida'),
+  description: Yup.string()
+    .required('Campo obrigatório')
+    .min(20, 'Descrição muito curta')
+    .max(600, 'Descrição muito comprida'),
+});
+
 class ModalAdd extends Component {
   static propTypes = {
+    editToolRequest: PropTypes.func.isRequired,
     closeAddToolModal: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
-    values: PropTypes.shape({
-      title: PropTypes.string,
-      link: PropTypes.string,
-      description: PropTypes.string,
-      tag: PropTypes.string,
-    }).isRequired,
+    createToolRequest: PropTypes.func.isRequired,
     tools: PropTypes.shape({
+      tool: PropTypes.object,
       data: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
@@ -63,18 +78,23 @@ class ModalAdd extends Component {
         }),
       ),
     }).isRequired,
-    errors: PropTypes.shape({
-      title: PropTypes.string,
-      link: PropTypes.string,
-      description: PropTypes.string,
-      tag: PropTypes.string,
-    }).isRequired,
   };
 
-    state = {
-      inputValue: '',
-      value: [],
-    };
+  state = {
+    inputValue: '',
+    value: [],
+    data: {},
+    description: '',
+  };
+
+  componentWillReceiveProps(nextProps) {
+    const data = nextProps.tools.tool;
+    this.setState({ data, value: data.tags, description: data.description });
+  }
+
+  handleTextarea = (e) => {
+    this.setState({ description: e.target.value });
+  }
 
   handleChange = (value) => {
     this.setState({ value });
@@ -101,62 +121,68 @@ class ModalAdd extends Component {
   };
 
   closeTool = () => {
+    localStorage.clear();
     const { closeAddToolModal } = this.props;
     closeAddToolModal();
-  }
+  };
+
+  handleSubmit = ({
+    title,
+    link,
+  }) => {
+    const id = localStorage.getItem('@id');
+    const { createToolRequest, editToolRequest } = this.props;
+    const { value, description } = this.state;
+
+    if (id) {
+      editToolRequest(id, title, link, description, value);
+    } else {
+      createToolRequest(title, link, description, value);
+    }
+  };
 
   render() {
     const {
-      handleChange, values, handleSubmit, errors,
-    } = this.props;
-    const { inputValue, value } = this.state;
+      inputValue,
+      value,
+      data,
+      description,
+    } = this.state;
+
+    const initialData = {
+      title: data.title || '',
+      link: data.link || '',
+      tags: data.tags || '',
+    };
 
     return (
       <Container>
         <Content size="big">
-          <h1>Add tool</h1>
-          <form onSubmit={handleSubmit}>
-            <span>Tool Name</span>
+          <h1>{ localStorage.getItem('@id') ? 'Edit tool' : 'Add tool' } </h1>
+          <Form schema={schema} onSubmit={this.handleSubmit} initialData={initialData}>
+            <span className="tagName">Tool Name</span>
+            <Input name="title" />
 
-            <input name="title" onChange={handleChange} value={values.title} />
+            <span className="tagName">Tool Link</span>
+            <Input name="link" />
 
-            {!!errors.title && <Erro>{errors.title}</Erro>}
+            <span className="tagName">Tool Description</span>
+            <Input multiline name="description" value={description} onChange={this.handleTextarea} />
 
-            <span>Tool Link</span>
-
-            <input name="link" onChange={handleChange} value={values.link} />
-
-            {!!errors.link && <Erro>{errors.link}</Erro>}
-
-            <span>Tool Description</span>
-
-            <textarea
-              name="description"
-              onChange={handleChange}
-              value={values.description}
-              rows="2"
-            />
-
-            {!!errors.description && <Erro>{errors.description}</Erro>}
-
-            <span>Tags</span>
-
+            <span className="tagName">Tags</span>
             <CreatableSelect
-              components={components}
+              styles={customStyles}
               inputValue={inputValue}
+              components={components}
               isClearable
               isMulti
               menuIsOpen={false}
               onChange={this.handleChange}
               onInputChange={this.handleInputChange}
               onKeyDown={this.handleKeyDown}
-              placeholder="Type something and press enter..."
+              placeholder="Aperte enter para inserir a tag"
               value={value}
             />
-
-            <input name="tags" onChange={handleChange} value={values.tags} />
-
-            {!!errors.tags && <Erro>{errors.tags}</Erro>}
 
             <div className="button">
               <ModalButton size="big" type="submit">
@@ -167,7 +193,7 @@ class ModalAdd extends Component {
                 Fechar
               </ModalButton>
             </div>
-          </form>
+          </Form>
         </Content>
       </Container>
     );
@@ -180,6 +206,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(ToolsActions, dispatch);
 
+<<<<<<< HEAD
 export default compose(
   connect(
     mapStateToProps,
@@ -228,4 +255,9 @@ export default compose(
       resetForm();
     },
   }),
+=======
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+>>>>>>> beta
 )(ModalAdd);

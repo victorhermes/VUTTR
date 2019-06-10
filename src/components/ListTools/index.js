@@ -8,7 +8,6 @@ import ToolsActions from '~/store/ducks/tools';
 import ModalButton from '~/styles/Button';
 
 import ModalAdd from '../ModalAdd';
-import ModalEdit from '../ModalEdit';
 
 import IconPlusCircle from '~/assets/images/Icon-Plus-Circle.svg';
 
@@ -18,12 +17,12 @@ import {
 
 class ListTools extends Component {
   static propTypes = {
+    editToolByIdRequest: PropTypes.func.isRequired,
     getToolRequest: PropTypes.func.isRequired,
     getAllToolRequest: PropTypes.func.isRequired,
     getByTagToolRequest: PropTypes.func.isRequired,
     deleteToolRequest: PropTypes.func.isRequired,
     openAddToolModal: PropTypes.func.isRequired,
-    openEditToolModal: PropTypes.func.isRequired,
     tools: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
@@ -39,10 +38,10 @@ class ListTools extends Component {
 
   state = {
     checkTag: false,
-    id: null,
   }
 
   componentDidMount() {
+    localStorage.clear();
     const { getToolRequest } = this.props;
     getToolRequest();
   }
@@ -54,11 +53,12 @@ class ListTools extends Component {
   };
 
   editTool = (e) => {
-    const { openEditToolModal } = this.props;
+    const { openAddToolModal, editToolByIdRequest } = this.props;
     const id = e.target.value;
-    this.setState({ id });
-    openEditToolModal();
-  }
+    localStorage.setItem('@id', id);
+    editToolByIdRequest(id);
+    openAddToolModal();
+  };
 
   filterTools = (e) => {
     const { getAllToolRequest } = this.props;
@@ -79,7 +79,7 @@ class ListTools extends Component {
 
   render() {
     const { tools, openAddToolModal } = this.props;
-    const { checkTag, id } = this.state;
+    const { checkTag } = this.state;
 
     return (
       <Container>
@@ -119,7 +119,7 @@ class ListTools extends Component {
 
               <Tags>
                 {tool.tags.map(tag => (
-                  <span key={Math.random() + tag}>#{tag}</span>
+                  <span key={Math.random() + tag.value}>#{tag.value}</span>
                 ))}
               </Tags>
             </ToolSection>
@@ -129,7 +129,6 @@ class ListTools extends Component {
         )}
 
         {tools.openAddToolModal && <ModalAdd />}
-        {tools.openEditToolModal && <ModalEdit id={id} />}
       </Container>
     );
   }

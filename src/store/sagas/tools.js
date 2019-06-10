@@ -30,7 +30,6 @@ export function* getTagTools({ word }) {
   } else {
     response = yield call(api.get, '/tools');
   }
-
   yield put(ToolsActions.getToolSuccess(response.data));
 }
 
@@ -47,6 +46,7 @@ export function* createTools({
 
     yield put(ToolsActions.createToolSuccess(response.data));
     yield put(ToolsActions.closeAddToolModal());
+    localStorage.clear();
 
     yield put(
       toastrActions.add({
@@ -102,7 +102,8 @@ export function* editRequest({
     });
 
     yield put(ToolsActions.editToolSuccess(id, response.data));
-    yield put(ToolsActions.closeEditToolModal());
+    yield put(ToolsActions.closeAddToolModal());
+    localStorage.clear();
 
     yield put(
       toastrActions.add({

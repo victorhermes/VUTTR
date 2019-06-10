@@ -38,12 +38,20 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: stretch;
 
-    > span {
+    > .tagName {
       color: #170c3a;
       font-size: 14px;
       line-height: 16px;
       font-weight: 600;
       margin-top: 15px;
+    }
+
+    > span {
+      color: #e04848;
+      margin: 5px 0 5px 0;
+      padding: 0;
+      font-size: 13px;
+      display: flex;
     }
 
     > input {
@@ -63,7 +71,7 @@ export const Content = styled.div`
       resize: vertical;
 
       &:focus {
-        border-color: #170c3a;
+        border-color: #3392ff;
       }
     }
 
