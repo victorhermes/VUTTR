@@ -17,6 +17,7 @@ import {
 
 class ListTools extends Component {
   static propTypes = {
+    editToolByIdRequest: PropTypes.func.isRequired,
     getToolRequest: PropTypes.func.isRequired,
     getAllToolRequest: PropTypes.func.isRequired,
     getByTagToolRequest: PropTypes.func.isRequired,
@@ -37,7 +38,6 @@ class ListTools extends Component {
 
   state = {
     checkTag: false,
-    id: null,
   }
 
   componentDidMount() {

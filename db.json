@@ -79,6 +79,22 @@
         }
       ],
       "id": 19
+    },
+    {
+      "title": "celular bom",
+      "link": "https://react-select.com/home#fixed-options",
+      "description": "Check this link from react docs: React Textarea Value. Basically for textArea ... To handle this case, you can specify a defaultValue attribute instead of value.",
+      "tags": [
+        {
+          "label": "celular",
+          "value": "celular"
+        },
+        {
+          "label": "folga",
+          "value": "folga"
+        }
+      ],
+      "id": 20
     }
   ]
 }

@@ -56,6 +56,7 @@ const schema = Yup.object().shape({
 
 class ModalAdd extends Component {
   static propTypes = {
+    tool: PropTypes.func.isRequired,
     closeAddToolModal: PropTypes.func.isRequired,
     createToolRequest: PropTypes.func.isRequired,
     tools: PropTypes.shape({
@@ -73,13 +74,20 @@ class ModalAdd extends Component {
 
   state = {
     inputValue: '',
-    value: [{ label: 'asdasd', value: 'asdasd' }],
+    value: [{ label: '', value: '' }],
     data: {},
+    description: '',
   };
 
   componentWillReceiveProps(nextProps) {
     const data = nextProps.tool;
     this.setState({ data });
+    this.setState({ value: data.tags });
+    this.setState({ description: data.description });
+  }
+
+  handleTextarea = (e) => {
+    this.setState({ description: e.target.value });
   }
 
   handleChange = (value) => {
@@ -114,21 +122,26 @@ class ModalAdd extends Component {
   handleSubmit = ({
     title,
     link,
-    description,
   }) => {
     const { createToolRequest } = this.props;
-    const { value } = this.state;
+    const { value, description } = this.state;
 
     createToolRequest(title, link, description, value);
   };
 
   render() {
-    const { inputValue, value, data } = this.state;
+    const {
+      inputValue,
+      value,
+      data,
+      description,
+    } = this.state;
 
     const initialData = {
       title: data.title || '',
       link: data.link || '',
-      description: data.description || '',
+      // description: data.description || '',
+      tags: data.tags || '',
     };
 
     return (
@@ -143,7 +156,7 @@ class ModalAdd extends Component {
             <Input name="link" />
 
             <span>Tool Description</span>
-            <Input multiline name="description" />
+            <Input multiline name="description" value={description} onChange={this.handleTextarea} />
 
             <span>Tags</span>
             <CreatableSelect
