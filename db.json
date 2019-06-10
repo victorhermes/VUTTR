@@ -1,47 +1,7 @@
 {
   "tools": [
     {
-      "title": "nodemon",
-      "link": "https://node.com",
-      "description": "Just use nodemon instead of node to run your code, and now your process will automatically restart when your code changes.",
-      "tags": [
-        {
-          "label": "nodemon",
-          "value": "nodemon"
-        },
-        {
-          "label": "node",
-          "value": "node"
-        },
-        {
-          "label": "react",
-          "value": "react"
-        }
-      ],
-      "id": 14
-    },
-    {
-      "title": "reactotron",
-      "link": "https://reactotron.com",
-      "description": "Reactotron is developed by Infinite Red, @rmevans9, and 70+ amazing contributors! Special thanks to @skellock for originally creating Reactotron while at Infinite Red.",
-      "tags": [
-        {
-          "label": "moom",
-          "value": "moom"
-        },
-        {
-          "label": "react",
-          "value": "react"
-        },
-        {
-          "label": "reactotron",
-          "value": "reactotron"
-        }
-      ],
-      "id": 17
-    },
-    {
-      "title": "asus",
+      "title": "asus 5",
       "link": "https://www.pontofrio.com.br/TelefoneseCelulares/Smartphones/Android/smartphone-asus-zenfone-4-ze554kl-preto-com-64gb-tela-5-5-dual-chip-camera-traseira-dupla-4g-android-7-0-processador-octa-core-e-6gb-ram-11822381.html?recsource=wproddisp&rectype=w9",
       "description": "Just a phone to speak with u",
       "tags": [
@@ -50,12 +10,12 @@
           "value": "zenfone"
         },
         {
-          "label": "4",
-          "value": "4"
-        },
-        {
           "label": "cool",
           "value": "cool"
+        },
+        {
+          "label": "5",
+          "value": "5"
         }
       ],
       "id": 18
@@ -95,6 +55,42 @@
         }
       ],
       "id": 20
+    },
+    {
+      "title": "apple",
+      "link": "https://apple.com",
+      "description": "Apple is a good ideia to use. I wanna one!",
+      "tags": [
+        {
+          "label": "mac",
+          "value": "mac"
+        },
+        {
+          "label": "watch",
+          "value": "watch"
+        }
+      ],
+      "id": 21
+    },
+    {
+      "title": "samsung",
+      "link": "https://react-select.com/creatable",
+      "description": "just a tool to remember",
+      "tags": [
+        {
+          "label": "sung",
+          "value": "sung"
+        },
+        {
+          "label": "is",
+          "value": "is"
+        },
+        {
+          "label": "bad",
+          "value": "bad"
+        }
+      ],
+      "id": 22
     }
   ]
 }

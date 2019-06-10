@@ -56,7 +56,9 @@ const schema = Yup.object().shape({
 
 class ModalAdd extends Component {
   static propTypes = {
+    withId: PropTypes.number.isRequired,
     tool: PropTypes.func.isRequired,
+    editToolRequest: PropTypes.func.isRequired,
     closeAddToolModal: PropTypes.func.isRequired,
     createToolRequest: PropTypes.func.isRequired,
     tools: PropTypes.shape({
@@ -74,7 +76,7 @@ class ModalAdd extends Component {
 
   state = {
     inputValue: '',
-    value: [{ label: '', value: '' }],
+    value: [],
     data: {},
     description: '',
   };
@@ -123,10 +125,14 @@ class ModalAdd extends Component {
     title,
     link,
   }) => {
-    const { createToolRequest } = this.props;
+    const { withId, createToolRequest, editToolRequest } = this.props;
     const { value, description } = this.state;
 
-    createToolRequest(title, link, description, value);
+    if (withId) {
+      editToolRequest(withId, title, link, description, value);
+    } else {
+      createToolRequest(title, link, description, value);
+    }
   };
 
   render() {

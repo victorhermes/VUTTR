@@ -102,7 +102,7 @@ export function* editRequest({
     });
 
     yield put(ToolsActions.editToolSuccess(id, response.data));
-    yield put(ToolsActions.closeEditToolModal());
+    yield put(ToolsActions.closeAddToolModal());
 
     yield put(
       toastrActions.add({
