@@ -41,7 +41,6 @@ class ListTools extends Component {
   }
 
   componentDidMount() {
-    localStorage.clear();
     const { getToolRequest } = this.props;
     getToolRequest();
   }
@@ -55,7 +54,6 @@ class ListTools extends Component {
   editTool = (e) => {
     const { openAddToolModal, editToolByIdRequest } = this.props;
     const id = e.target.value;
-    localStorage.setItem('@id', id);
     editToolByIdRequest(id);
     openAddToolModal();
   };

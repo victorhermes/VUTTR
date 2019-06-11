@@ -46,7 +46,6 @@ export function* createTools({
 
     yield put(ToolsActions.createToolSuccess(response.data));
     yield put(ToolsActions.closeAddToolModal());
-    localStorage.clear();
 
     yield put(
       toastrActions.add({
@@ -103,7 +102,6 @@ export function* editRequest({
 
     yield put(ToolsActions.editToolSuccess(id, response.data));
     yield put(ToolsActions.closeAddToolModal());
-    localStorage.clear();
 
     yield put(
       toastrActions.add({

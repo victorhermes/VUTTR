@@ -121,7 +121,6 @@ class ModalAdd extends Component {
   };
 
   closeTool = () => {
-    localStorage.clear();
     const { closeAddToolModal } = this.props;
     closeAddToolModal();
   };
@@ -130,12 +129,11 @@ class ModalAdd extends Component {
     title,
     link,
   }) => {
-    const id = localStorage.getItem('@id');
     const { createToolRequest, editToolRequest } = this.props;
-    const { value, description } = this.state;
+    const { value, description, data } = this.state;
 
-    if (id) {
-      editToolRequest(id, title, link, description, value);
+    if (data.id) {
+      editToolRequest(data.id, title, link, description, value);
     } else {
       createToolRequest(title, link, description, value);
     }
@@ -158,7 +156,7 @@ class ModalAdd extends Component {
     return (
       <Container>
         <Content size="big">
-          <h1>{ localStorage.getItem('@id') ? 'Edit tool' : 'Add tool' } </h1>
+          <h1>{ data.id ? 'Edit tool' : 'Add tool' } </h1>
           <Form schema={schema} onSubmit={this.handleSubmit} initialData={initialData}>
             <span className="tagName">Tool Name</span>
             <Input name="title" />
