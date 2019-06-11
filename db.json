@@ -12,10 +12,6 @@
         {
           "label": "plugin",
           "value": "plugin"
-        },
-        {
-          "label": "react",
-          "value": "react"
         }
       ],
       "id": 1
