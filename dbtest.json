@@ -12,6 +12,10 @@
         {
           "label": "plugin",
           "value": "plugin"
+        },
+        {
+          "label": "cool",
+          "value": "cool"
         }
       ],
       "id": 1

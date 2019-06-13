@@ -26,7 +26,7 @@ export function* getTagTools({ word }) {
   let response = {};
 
   if (word) {
-    response = yield call(api.get, `/tools?tags_like=${word}`);
+    response = yield call(api.get, `/tools?q=${word}`);
   } else {
     response = yield call(api.get, '/tools');
   }

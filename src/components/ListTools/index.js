@@ -99,7 +99,7 @@ class ListTools extends Component {
           tools.data.map(tool => (
             <ToolSection key={tool.id}>
               <ToolHeader>
-                <a href={tool.link}>
+                <a target="_blank" rel="noopener noreferrer" href={tool.link}>
                   <h1> {tool.title}</h1>
                 </a>
                 <div>
