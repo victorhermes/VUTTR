@@ -12,6 +12,10 @@
         {
           "label": "plugin",
           "value": "plugin"
+        },
+        {
+          "label": "wow",
+          "value": "wow"
         }
       ],
       "id": 1
@@ -62,30 +66,6 @@
         }
       ],
       "id": 4
-    },
-    {
-      "title": "hackernoon",
-      "link": "https://hackernoon.com/",
-      "description": "A mini blog to show content about programming",
-      "tags": [
-        {
-          "label": "react",
-          "value": "react"
-        },
-        {
-          "label": "blog",
-          "value": "blog"
-        },
-        {
-          "label": "medium",
-          "value": "medium"
-        },
-        {
-          "label": "top 10",
-          "value": "top 10"
-        }
-      ],
-      "id": 5
     }
   ]
 }
