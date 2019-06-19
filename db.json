@@ -6,10 +6,6 @@
       "description": "React specific linting rules for ESLint ",
       "tags": [
         {
-          "label": "eslint",
-          "value": "eslint"
-        },
-        {
           "label": "plugin",
           "value": "plugin"
         },
