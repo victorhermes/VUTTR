@@ -5,6 +5,7 @@
   "dependencies": {
     "@rocketseat/unform": "^1.4.0",
     "axios": "^0.18.0",
+    "babel-jest": "^24.8.0",
     "customize-cra": "^0.2.12",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -14,7 +15,7 @@
     "react-helmet": "^5.2.1",
     "react-redux": "^7.0.3",
     "react-redux-toastr": "^7.5.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.0.1",
     "react-select": "^2.4.3",
     "react-transition-group": "^4.0.1",
     "reactotron-react-js": "^3.2.0",
@@ -32,7 +33,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "babel-plugin-root-import": "^6.1.0",
+    "chai": "^4.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
@@ -59,6 +61,12 @@
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-import-helpers": "^0.1.4",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.13.0"
+    "eslint-plugin-react": "^7.13.0",
+    "redux-mock-store": "^1.5.3"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>src/setupTests.js"
+    ]
   }
 }
