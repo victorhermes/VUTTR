@@ -11,7 +11,7 @@ const App = () => (
   <Provider store={store}>
     <Helmet>
       <meta charSet="utf-8" />
-      <title>VUTTR by Victor Hermes</title>
+      <title>VUTTR</title>
       <meta
         name="description"
         content="Save interesting tools in a safe place. From programmers to programmers."
