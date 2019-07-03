@@ -1,4 +1,4 @@
-## :purple_heart: How to run the project
+## How to run the project :purple_heart:
 
 In the project directory, you can run:
 
