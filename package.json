@@ -62,6 +62,8 @@
     "eslint-plugin-import-helpers": "^0.1.4",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
+    "jest": "24.7.1",
+    "jest-enzyme": "^7.0.2",
     "redux-mock-store": "^1.5.3"
   }
 }
