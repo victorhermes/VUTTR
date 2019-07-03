@@ -1,4 +1,4 @@
-## Como executar o projeto
+## How to run the project
 
 In the project directory, you can run:
 
