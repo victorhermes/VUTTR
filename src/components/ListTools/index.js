@@ -24,6 +24,7 @@ class ListTools extends Component {
     deleteToolRequest: PropTypes.func.isRequired,
     openAddToolModal: PropTypes.func.isRequired,
     tools: PropTypes.shape({
+      openAddToolModal: PropTypes.func.isRequired,
       data: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
