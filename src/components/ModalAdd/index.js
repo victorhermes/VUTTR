@@ -6,10 +6,8 @@ import CreatableSelect from 'react-select/lib/Creatable';
 import { bindActionCreators } from 'redux';
 import * as Yup from 'yup';
 
-import ToolsActions from '~/store/ducks/tools';
-
-import ModalButton from '~/styles/Button';
-
+import ToolsActions from '../../store/ducks/tools';
+import ModalButton from '../../styles/Button';
 import { Container, Content } from './styles';
 
 const components = {
@@ -25,7 +23,7 @@ const dot = color => ({
 const customStyles = {
   control: styles => ({
     ...styles,
-    ...(dot('transparent')),
+    ...dot('transparent'),
     backgroundColor: '#f5f4f6',
     border: '1px solid #ebeaed',
     cursor: 'edit',
@@ -94,7 +92,7 @@ class ModalAdd extends Component {
 
   handleTextarea = (e) => {
     this.setState({ description: e.target.value });
-  }
+  };
 
   handleChange = (value) => {
     this.setState({ value });
@@ -125,10 +123,7 @@ class ModalAdd extends Component {
     closeAddToolModal();
   };
 
-  handleSubmit = ({
-    title,
-    link,
-  }) => {
+  handleSubmit = ({ title, link }) => {
     const { createToolRequest, editToolRequest } = this.props;
     const { value, description, data } = this.state;
 
@@ -141,10 +136,7 @@ class ModalAdd extends Component {
 
   render() {
     const {
-      inputValue,
-      value,
-      data,
-      description,
+      inputValue, value, data, description,
     } = this.state;
 
     const initialData = {
@@ -156,7 +148,7 @@ class ModalAdd extends Component {
     return (
       <Container>
         <Content size="big">
-          <h1>{ data.id ? 'Edit tool' : 'Add tool' } </h1>
+          <h1>{data.id ? 'Edit tool' : 'Add tool'} </h1>
           <Form schema={schema} onSubmit={this.handleSubmit} initialData={initialData}>
             <span className="tagName">Tool Name</span>
             <Input name="title" />
@@ -165,7 +157,12 @@ class ModalAdd extends Component {
             <Input name="link" />
 
             <span className="tagName">Tool Description</span>
-            <Input multiline name="description" value={description} onChange={this.handleTextarea} />
+            <Input
+              multiline
+              name="description"
+              value={description}
+              onChange={this.handleTextarea}
+            />
 
             <span className="tagName">Tags</span>
             <CreatableSelect

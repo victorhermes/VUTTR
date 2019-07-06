@@ -3,19 +3,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import ToolsActions from '~/store/ducks/tools';
-
-import ModalButton from '~/styles/Button';
-
+import IconPlusCircle from '../../assets/images/Icon-Plus-Circle.svg';
+import ToolsActions from '../../store/ducks/tools';
+import ModalButton from '../../styles/Button';
 import ModalAdd from '../ModalAdd';
-
-import IconPlusCircle from '~/assets/images/Icon-Plus-Circle.svg';
-
 import {
   Container, ToolSection, ToolHeader, Header, Tags, Search, Btn,
 } from './styles';
 
 class ListTools extends Component {
+  static defaultProps = {
+    tools: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+          link: PropTypes.string,
+          description: PropTypes.string,
+          tags: PropTypes.array,
+        }),
+      ),
+    }).isRequired,
+  };
+
   static propTypes = {
     editToolByIdRequest: PropTypes.func.isRequired,
     getToolRequest: PropTypes.func.isRequired,
@@ -24,22 +34,22 @@ class ListTools extends Component {
     deleteToolRequest: PropTypes.func.isRequired,
     openAddToolModal: PropTypes.func.isRequired,
     tools: PropTypes.shape({
-      openAddToolModal: PropTypes.func.isRequired,
+      openAddToolModal: PropTypes.func,
       data: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
           title: PropTypes.string,
           link: PropTypes.string,
           description: PropTypes.string,
-          tags: PropTypes.array.isRequired,
+          tags: PropTypes.array,
         }),
       ),
-    }).isRequired,
+    }),
   };
 
   state = {
     checkTag: false,
-  }
+  };
 
   componentDidMount() {
     const { getToolRequest } = this.props;
@@ -63,18 +73,18 @@ class ListTools extends Component {
     const { getAllToolRequest } = this.props;
     const word = e.target.value;
     getAllToolRequest(word);
-  }
+  };
 
   filterByTagTools = (e) => {
     const { getByTagToolRequest } = this.props;
     const word = e.target.value;
     getByTagToolRequest(word);
-  }
+  };
 
   getCheck = (e) => {
     const checkTag = e.target.checked;
     this.setState({ checkTag });
-  }
+  };
 
   render() {
     const { tools, openAddToolModal } = this.props;
@@ -84,7 +94,11 @@ class ListTools extends Component {
       <Container>
         <Header>
           <Search>
-            <input type="text" placeholder="Procurar ferramenta" onChange={!checkTag ? this.filterTools : this.filterByTagTools} />
+            <input
+              type="text"
+              placeholder="Procurar ferramenta"
+              onChange={!checkTag ? this.filterTools : this.filterByTagTools}
+            />
 
             <div>
               <input type="checkbox" onClick={this.getCheck} />
