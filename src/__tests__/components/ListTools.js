@@ -17,12 +17,36 @@ const INITIAL_STATE = {
         id: 1,
         tags: [
           {
-            label: 'plugin',
-            value: 'plugin',
+            label: 'modal',
+            value: 'modal',
           },
           {
-            label: 'wow',
-            value: 'wow',
+            label: 'rodal',
+            value: 'rodal',
+          },
+          {
+            label: 'react',
+            value: 'react',
+          },
+        ],
+      },
+      {
+        title: 'yup',
+        link: 'https://github.com/yup',
+        description: 'Yup is something cool!',
+        id: 2,
+        tags: [
+          {
+            label: 'modal',
+            value: 'modal',
+          },
+          {
+            label: 'rodal',
+            value: 'rodal',
+          },
+          {
+            label: 'react',
+            value: 'react',
           },
         ],
       },
@@ -32,12 +56,12 @@ const INITIAL_STATE = {
 
 const store = mockStore(INITIAL_STATE);
 
-it('Should render the list', () => {
+it('Should render the tools', () => {
   const wrapper = mount(
     <Provider store={store}>
       <ListTools />
     </Provider>,
   );
 
-  expect(wrapper.find('h1').exists()).toBe(true);
+  expect(wrapper.find('h1').length).toBe(2);
 });
