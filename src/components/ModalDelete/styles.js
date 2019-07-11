@@ -24,7 +24,7 @@ export const Content = styled.div`
   border-radius: 6px;
   padding: 20px;
   width: 100%;
-  max-width: ${props => (props.size === 'big' ? 600 : 400)}px;
+  max-width: 400px;
 
   h1 {
     font-size: 26px;
