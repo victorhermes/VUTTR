@@ -18,6 +18,8 @@ const { Types, Creators } = createActions({
   editToolByIdSuccess: ['tool'],
   openAddToolModal: null,
   closeAddToolModal: null,
+  openRemoveToolModal: null,
+  closeRemoveToolModal: null,
 });
 
 export const ToolsTypes = Types;
@@ -39,6 +41,10 @@ export const success = (state, { data }) => state.merge({ data });
 export const openAddModal = state => state.merge({ openAddToolModal: true });
 
 export const closeAddModal = state => state.merge({ openAddToolModal: false });
+
+export const openRemoveModal = state => state.merge({ openRemoveToolModal: true });
+
+export const closeRemoveModal = state => state.merge({ openRemoveToolModal: false });
 
 export const deleteSuccess = (state, { id }) => state.merge({
   ...state,
@@ -64,6 +70,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_TOOL_SUCCESS]: success,
   [Types.OPEN_ADD_TOOL_MODAL]: openAddModal,
   [Types.CLOSE_ADD_TOOL_MODAL]: closeAddModal,
+  [Types.OPEN_REMOVE_TOOL_MODAL]: openRemoveModal,
+  [Types.CLOSE_REMOVE_TOOL_MODAL]: closeRemoveModal,
   [Types.CREATE_TOOL_SUCCESS]: createSuccess,
   [Types.DELETE_TOOL_SUCCESS]: deleteSuccess,
   [Types.EDIT_TOOL_SUCCESS]: editSuccess,

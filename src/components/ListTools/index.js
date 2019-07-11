@@ -7,6 +7,7 @@ import IconPlusCircle from '../../assets/images/Icon-Plus-Circle.svg';
 import ToolsActions from '../../store/ducks/tools';
 import ModalButton from '../../styles/Button';
 import ModalAdd from '../ModalAdd';
+import ModalDelete from '../ModalDelete';
 import {
   Container, ToolSection, ToolHeader, Header, Tags, Search, Btn,
 } from './styles';
@@ -31,10 +32,11 @@ class ListTools extends Component {
     getToolRequest: PropTypes.func.isRequired,
     getAllToolRequest: PropTypes.func.isRequired,
     getByTagToolRequest: PropTypes.func.isRequired,
-    deleteToolRequest: PropTypes.func.isRequired,
     openAddToolModal: PropTypes.func.isRequired,
+    openRemoveToolModal: PropTypes.func.isRequired,
     tools: PropTypes.shape({
-      openAddToolModal: PropTypes.func,
+      openAddToolModal: PropTypes.bool,
+      openRemoveToolModal: PropTypes.bool,
       data: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
@@ -49,6 +51,7 @@ class ListTools extends Component {
 
   state = {
     checkTag: false,
+    id: false,
   };
 
   componentDidMount() {
@@ -57,9 +60,10 @@ class ListTools extends Component {
   }
 
   deleteTool = (e) => {
-    const { deleteToolRequest } = this.props;
+    const { openRemoveToolModal } = this.props;
     const id = e.target.value;
-    deleteToolRequest(id);
+    this.setState({ id });
+    openRemoveToolModal();
   };
 
   editTool = (e) => {
@@ -88,7 +92,7 @@ class ListTools extends Component {
 
   render() {
     const { tools, openAddToolModal } = this.props;
-    const { checkTag } = this.state;
+    const { checkTag, id } = this.state;
 
     return (
       <Container>
@@ -142,6 +146,7 @@ class ListTools extends Component {
         )}
 
         {tools.openAddToolModal && <ModalAdd />}
+        {tools.openRemoveToolModal && <ModalDelete idTool={id} />}
       </Container>
     );
   }
