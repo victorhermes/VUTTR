@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import ToolsActions from '../../store/ducks/tools';
+import ModalButton from '../../styles/Button';
 import { Container, Content } from './styles';
 
 class ModalDelete extends Component {
@@ -28,14 +29,18 @@ class ModalDelete extends Component {
   render() {
     return (
       <Container>
-        <Content size="big">
-          <h1>Delete</h1>
-          <button type="button" onClick={this.closeRemove}>
-            Cancel
-          </button>
-          <button type="button" onClick={this.deleteTool}>
-            Yes, remove
-          </button>
+        <Content>
+          <h1>Remove tool</h1>
+          <p>Are you sure you want to remove the tool?</p>
+          <div className="button">
+            <ModalButton type="button" size="big" onClick={this.deleteTool}>
+              Yes, remove
+            </ModalButton>
+
+            <ModalButton type="button" size="big" color="grey" onClick={this.closeRemove}>
+              Cancel
+            </ModalButton>
+          </div>
         </Content>
       </Container>
     );

@@ -148,7 +148,7 @@ class ModalAdd extends Component {
     return (
       <Container>
         <Content size="big">
-          <h1>{data.id ? 'Edit tool' : 'Add tool'} </h1>
+          <h1>{data.id ? 'Edit tool' : 'Add new tool'} </h1>
           <Form schema={schema} onSubmit={this.handleSubmit} initialData={initialData}>
             <span className="tagName">Tool Name</span>
             <Input name="title" />

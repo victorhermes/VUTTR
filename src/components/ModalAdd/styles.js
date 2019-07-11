@@ -21,6 +21,7 @@ export const Content = styled.div`
   animation: 0.5s ${fadeGo};
   background: #fff;
   border-radius: 6px;
+  margin: 10px;
   padding: 40px;
   width: 100%;
   max-width: ${props => (props.size === 'big' ? 600 : 400)}px;
@@ -28,7 +29,6 @@ export const Content = styled.div`
   h1 {
     font-size: 26px;
     font-weight: 500;
-    text-align: center;
     margin: 0 0 10px;
     color: #170c3a;
   }
