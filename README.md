@@ -1,19 +1,37 @@
-## How to run the project :purple_heart:
+# Very Useful Tools to Remember :purple_heart:
 
-In the project directory, you can run:
+Tool centralizer, where you can write down the tool name, link where it is, description, and tags. In this way, the tool is saved for later use.
 
-### `yarn install`
+## Run the project
 
-This will install the project dependencies.
+To install the project dependencies.
 
-### `npx json-server db.json`
+```bash
+yarn install
+```
 
-This snippet of code will run the local database.
+We use json-server to run the local database. First run the code snippet before the frontend.
 
-### `yarn start`
+```bash
+npx json-server db.json
+```
 
-Runs the app in the development mode.
-Open http://localhost:3001 to view it in the browser.
+Finally, let's run the frontend code.
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+```bash
+yarn start
+```
+
+Such a message may appear **Would you like to run the app on another port instead? (Y/n)**
+If it does, press **Y** to run the application on another port.
+
+## Contributing/Credits
+
+This project welcomes contributions and suggestions :)
+
+If the project was interesting, or helped you in any way, leave a star to help us.
+
+Developed by **Victor Hermes**
+
+- [Github](https://github.com/victorhermes)
+- [Linkedin](https://br.linkedin.com/in/victorhermes)
