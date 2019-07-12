@@ -25,19 +25,9 @@ module.exports = {
         },
       ],
     },
-    /* {
-      name: 'Development',
-      content: './docs/Development/README.md',
-      sections: [
-        {
-          name: 'Tools used',
-          content: './docs/Development/ToolsUsed.md',
-        },
-        {
-          name: 'Screenshots',
-          content: './docs/Development/Screenshots.md',
-        },
-      ],
-    }, */
+    {
+      name: 'Credits',
+      content: './docs/Credits/README.md',
+    },
   ],
 };
