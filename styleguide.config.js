@@ -23,6 +23,10 @@ module.exports = {
           name: 'Run the project',
           content: './docs/Introduction/RunTheProject.md',
         },
+        {
+          name: 'Screenshots',
+          content: './docs/Introduction/Screenshots.md',
+        },
       ],
     },
     {
