@@ -4,6 +4,8 @@ Tool centralizer, where you can write down the tool name, link where it is, desc
 
 ## Run the project
 
+- [Full Documentation](https://victorhermes.github.io/VUTTR/)
+
 To install the project dependencies.
 
 ```bash
