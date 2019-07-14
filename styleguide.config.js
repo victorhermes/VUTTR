@@ -24,6 +24,10 @@ module.exports = {
           content: './docs/Introduction/RunTheProject.md',
         },
         {
+          name: 'Run the tests',
+          content: './docs/Introduction/RunTheTests.md',
+        },
+        {
           name: 'Screenshots',
           content: './docs/Introduction/Screenshots.md',
         },
