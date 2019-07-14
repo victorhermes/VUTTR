@@ -179,6 +179,26 @@
         }
       ],
       "id": 10
+    },
+    {
+      "title": "jest-styled 💅 ",
+      "link": "https://github.com/styled-components/jest-styled-components",
+      "description": "🔧 Jest utilities for Styled Components ",
+      "tags": [
+        {
+          "label": "jest",
+          "value": "jest"
+        },
+        {
+          "label": "tests",
+          "value": "tests"
+        },
+        {
+          "label": "styled-components",
+          "value": "styled-components"
+        }
+      ],
+      "id": 11
     }
   ]
 }

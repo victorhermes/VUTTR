@@ -2,9 +2,12 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import IconPlusCircle from '../../assets/images/Icon-Plus-Circle.svg';
-import ToolsActions from '../../store/ducks/tools';
-import ModalButton from '../../styles/Button';
+import IconPlusCircle from '~/assets/images/Icon-Plus-Circle.svg';
+
+import ToolsActions from '~/store/ducks/tools';
+
+import ModalButton from '~/styles/Button';
+
 import ModalAdd from '../ModalAdd';
 import ModalDelete from '../ModalDelete';
 import {

@@ -1,11 +1,23 @@
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';
 import createStore from 'redux-mock-store';
+import styled from 'styled-components';
 
-import ListTools from '../../components/ListTools';
+import 'jest-styled-components';
+import ListTools from '~/components/ListTools';
 
 const mockStore = createStore();
+
+const Btn = styled.button`
+  font-size: 18px;
+  color: #31225fa1;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  padding: 3px 5px 3px 5px;
+  text-transform: uppercase;
+`;
 
 const INITIAL_STATE = {
   tools: {
@@ -63,5 +75,10 @@ it('Should render the tools', () => {
     </Provider>,
   );
 
+  const button = shallow(<Btn />);
   expect(wrapper.find('h1').length).toBe(2);
+  expect(wrapper.find('p').length).toBe(3);
+  expect(button).toMatchSnapshot();
+  expect(wrapper.find('button').length).toBe(5);
+  expect(wrapper.find('span').length).toBe(6);
 });
