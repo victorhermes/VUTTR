@@ -1,22 +1,6 @@
 {
   "tools": [
     {
-      "title": "toolbox",
-      "link": "https://github.com/docker/toolbox",
-      "description": "The Docker Toolbox...",
-      "tags": [
-        {
-          "label": "docker",
-          "value": "docker"
-        },
-        {
-          "label": "toolbox",
-          "value": "toolbox"
-        }
-      ],
-      "id": 2
-    },
-    {
       "title": "emotion",
       "link": "https://github.com/emotion-js/emotion",
       "description": "👩‍🎤 CSS-in-JS library designed for high performance style composition ",
@@ -32,6 +16,10 @@
         {
           "label": "framework",
           "value": "framework"
+        },
+        {
+          "label": "composition",
+          "value": "composition"
         }
       ],
       "id": 3
@@ -93,10 +81,6 @@
       "link": "https://github.com/airbnb/enzyme",
       "description": "JavaScript Testing utilities for React ",
       "tags": [
-        {
-          "label": "tests",
-          "value": "tests"
-        },
         {
           "label": "react",
           "value": "react"
@@ -165,44 +149,24 @@
       "id": 8
     },
     {
-      "title": "formcat",
-      "link": "https://github.com/guilouro/formcat",
-      "description": "A simple and easy way to control forms in React using the React Context API ",
+      "title": "reactotron",
+      "link": "https://reactotron.com",
+      "description": "App to debug react apps",
       "tags": [
         {
-          "label": "forms",
-          "value": "forms"
+          "label": "react",
+          "value": "react"
         },
         {
-          "label": "control-forms",
-          "value": "control-forms"
+          "label": "tests",
+          "value": "tests"
         },
         {
-          "label": "formcat",
-          "value": "formcat"
+          "label": "apps",
+          "value": "apps"
         }
       ],
       "id": 9
-    },
-    {
-      "title": "VUTTR 💜",
-      "link": "https://github.com/victorhermes/VUTTR",
-      "description": "Tool to save tools <3",
-      "tags": [
-        {
-          "label": "tool",
-          "value": "tool"
-        },
-        {
-          "label": "cool",
-          "value": "cool"
-        },
-        {
-          "label": "💜",
-          "value": "💜"
-        }
-      ],
-      "id": 10
     }
   ]
 }
