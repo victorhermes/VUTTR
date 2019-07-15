@@ -16,10 +16,6 @@
         {
           "label": "framework",
           "value": "framework"
-        },
-        {
-          "label": "composition",
-          "value": "composition"
         }
       ],
       "id": 3
@@ -167,18 +163,6 @@
         }
       ],
       "id": 9
-    },
-    {
-      "title": "nodemon",
-      "link": "https://moom.com",
-      "description": "aksdkdakd aksdkas kdaks dkasd kask ",
-      "tags": [
-        {
-          "label": "cool",
-          "value": "cool"
-        }
-      ],
-      "id": 10
     },
     {
       "title": "jest-styled 💅 ",
