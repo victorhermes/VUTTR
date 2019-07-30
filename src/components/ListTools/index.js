@@ -18,7 +18,7 @@ export default function ListTools() {
   const dispatch = useDispatch();
   const tools = useSelector(state => state.tools);
 
-  const [checkTag, setTag] = useState(false);
+  const [checkTag] = useState(false);
   const [id, setId] = useState(false);
 
   useEffect(() => {
@@ -48,10 +48,10 @@ export default function ListTools() {
     dispatch(ToolsActions.getByTagToolRequest(word));
   }
 
-  function getCheck(e) {
+  /* function getCheck(e) {
     const checkingTag = e.target.checked;
     setTag(checkingTag);
-  }
+  } */
 
   function openModalAdd() {
     dispatch(ToolsActions.openAddToolModal());
@@ -67,10 +67,10 @@ export default function ListTools() {
             onChange={!checkTag ? filterTools : filterByTagTools}
           />
 
-          <div>
+          {/* <div>
             <input type="checkbox" onClick={getCheck} />
             <p>Procurar por tags?</p>
-          </div>
+          </div> */}
         </Search>
         <ModalButton onClick={openModalAdd}>
           <img src={IconPlusCircle} alt="Adicionar item" />

@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         overflow: ${props => (props.tools.openEditToolModal || props.tools.openAddToolModal ? 'hidden' : '')};
-        background: #31225F;
+        background: #05074A;
         color: #FFF;
         font-family: 'Source Sans Pro', sans-serif;
         text-rendering: optimizeLegibility !important;
